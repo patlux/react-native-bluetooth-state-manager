@@ -1,0 +1,31 @@
+{
+  "name": "react-native-bluetooth-state-manager",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "repository": "github.com:patlux/react-native-bluetooth-state-manager.git",
+  "author": "Patrick Wozniak <email@patwoz.de>",
+  "license": "MIT",
+  "keywords": [
+    "react-native"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.3",
+    "eslint": "4.19.1",
+    "husky": "0.14.3",
+    "lint-staged": "7.0.5",
+    "prettier": "1.12.1"
+  },
+  "peerDependencies": {
+    "react-native": "0.55.3"
+  }
+}
