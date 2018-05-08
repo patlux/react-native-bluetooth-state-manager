@@ -24,13 +24,13 @@ In several of my projects I'm working on, I had to integrate several third-party
 Using [Yarn](https://yarnpkg.com/): (recommended)
 
 ```shell
-yarn add patlux/react-native-bluetooth-state-manager
+yarn add react-native-bluetooth-state-manager
 ```
 
 Using [npm](https://www.npmjs.com/):
 
 ```shell
-npm install patlux/react-native-bluetooth-state-manager --save
+npm install react-native-bluetooth-state-manager --save
 ```
 
 ## Linking
