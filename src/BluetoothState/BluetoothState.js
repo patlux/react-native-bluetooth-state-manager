@@ -85,9 +85,10 @@ class BluetoothStatus extends React.PureComponent {
   // RENDER
 
   render() {
+    const { children } = this.props;
     return (
       <BluetoothStateContext.Provider value={this.state.context}>
-        {this.props.children}
+        {typeof children === 'function' ? children(this.state.context) : children}
       </BluetoothStateContext.Provider>
     );
   }
