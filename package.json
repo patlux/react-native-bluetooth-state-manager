@@ -1,6 +1,6 @@
 {
   "name": "react-native-bluetooth-state-manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "src/index.js",
   "repository": "github.com:patlux/react-native-bluetooth-state-manager.git",
   "author": "Patrick Wozniak <email@patwoz.de>",
