@@ -1,7 +1,7 @@
 {
   "name": "react-native-bluetooth-state-manager",
   "description": "Manage the bluetooth state of your device ",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "src/index.js",
   "repository": "git+https://github.com/patlux/react-native-bluetooth-state-manager.git",
   "author": "Patrick Wozniak <email@patwoz.de>",
