@@ -249,6 +249,10 @@ BluetoothStateManager.addEventListener(
 
 The declarative way uses the new context api of React 16.3.
 
+```javascript
+import { BluetoothState } from 'react-native-bluetooth-state-manager';
+```
+
 ### `<BluetoothState>`
 
 #### props
@@ -322,6 +326,8 @@ Each component has access to the same context as shown below.
 #### Example
 
 ```jsx
+import { BluetoothState } from 'react-native-bluetooth-state-manager';
+
 <BluetoothState>
   <BluetoothState.PoweredOn>
     <Text>This will rendered only when bluetooth is turned on.</Text>
@@ -349,7 +355,7 @@ Each component has access to the same context as shown below.
   <BluetoothState.Unknown>
     <Text>You have a really strange phone.</Text>
   </BluetoothState.Unknown>
-</BluetoothState>
+</BluetoothState>;
 ```
 
 ## ToDo's
