@@ -19,55 +19,15 @@ const THEME_CUSTOM = {
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { reload: false };
+    this.state = { reloadKey: 0 };
   }
 
-  componentWillUnmount() {
-    this.clearReloadTimeout();
-  }
-
-  onPressReload = () => {
-    this.setState({ reload: true });
-  };
-
-  onReloadFinish = () => {
-    this.setState({ reload: false });
-  };
-
-  onReloadFinishDelayed = () => {
-    this.clearReloadTimeout();
-    this.reloadTimeout = setTimeout(() => {
-      this.onReloadFinish();
-      this.clearReloadTimeout();
-    }, 1000);
-  };
-
-  clearReloadTimeout = () => {
-    if (this.reloadTimeout) {
-      clearTimeout(this.reloadTimeout);
-      this.reloadTimeout = null;
-    }
-  };
-
-  renderReload = () => {
-    return (
-      <View style={[styles.container, styles.mainContainerCentered]}>
-        <ActivityIndicator
-          onLayout={this.onReloadFinishDelayed}
-          size="large"
-          color={THEME_CUSTOM.colors.primary}
-        />
-      </View>
-    );
-  };
+  incrementReloadKey = prevState => ({ reloadKey: prevState.reloadKey + 1 });
+  onPressReload = () => this.setState(this.incrementReloadKey);
 
   renderContent = () => {
-    if (this.state.reload) {
-      return this.renderReload();
-    }
-
     return (
-      <React.Fragment>
+      <React.Fragment key={this.state.reloadKey}>
         <ExampleWithApi />
         <ExampleWithDeclarativeApi />
       </React.Fragment>
@@ -81,11 +41,7 @@ class App extends React.PureComponent {
         <PaperProvider theme={THEME_CUSTOM}>
           <Toolbar>
             <ToolbarContent title="Example" subtitle="react-native-bluetooth-state-manager" />
-            <ToolbarAction
-              icon="replay"
-              onPress={this.onPressReload}
-              style={{ opacity: this.state.reload ? 0.4 : 1 }}
-            />
+            <ToolbarAction icon="replay" onPress={this.onPressReload} />
           </Toolbar>
           {this.renderContent()}
         </PaperProvider>

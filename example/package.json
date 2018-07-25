@@ -1,6 +1,6 @@
 {
   "name": "RNBluetoothStateManagerExample",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Patrick Wozniak <email@patwoz.de>",
   "license": "MIT",
   "keywords": ["react-native"],
@@ -14,17 +14,16 @@
     "menu-android": "adb shell input keyevent 82"
   },
   "dependencies": {
-    "react": "16.3.2",
-    "react-native": "0.55.3",
+    "react": "16.4.1",
+    "react-native": "0.56.0",
     "react-native-app-state": "1.0.2",
     "react-native-paper": "1.7.0",
-    "react-native-vector-icons": "4.6.0",
-    "react-navigation": "2.0.0"
+    "react-native-vector-icons": "4.6.0"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
     "babel-plugin-module-resolver": "3.1.1",
-    "babel-preset-react-native": "4.0.0",
+    "babel-preset-react-native": "5.0.2",
     "glob-to-regexp": "0.4.0",
     "jest": "22.4.3",
     "metro-bundler": "0.22.1",

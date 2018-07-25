@@ -6,13 +6,6 @@ The only purpose of this library is to manage the Bluetooth state. Not more, not
 
 If you need further functionality like connecting and communicating to a device, please look at [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx).
 
-## Why?
-
-##### Why not just using [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx)?
-
-Because it's to over bloated for my purpose.
-In several of my projects I'm working on, I had to integrate several third-party SDK which communicates with different bluetooth devices (on the native side). So the only functionality I needed there (on the javascript side), was to check if the bluetooth is enabled to start the third-party SDK.
-
 ## Features
 
 * [Manage bluetooth state](#getstate)
@@ -370,6 +363,13 @@ import { BluetoothState } from 'react-native-bluetooth-state-manager';
 ## ToDo's
 
 * [ ] Add tests
+
+## Why?
+
+##### Why not just using [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx)?
+
+Because it's to over bloated for my purpose.
+In several of my projects I'm working on, I had to integrate several third-party SDK which communicates with different bluetooth devices (on the native side). So the only functionality I needed there (on the javascript side), was to check if the bluetooth is enabled to start the third-party SDK.
 
 ## License
 
