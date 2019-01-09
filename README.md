@@ -170,15 +170,7 @@ Tested:
 
 ##### iOS
 
-Opens the bluetooth settings or the general settings.
-
-The behavior is different in the iOS versions:
-
-* **iOS 9 and below**: Not tested (I don't have a real device with iOS 9)
-* **iOS 10**: Opens the bluetooth settings
-  * Tested on a iPhone 5S with iOS 10.3.3
-* **iOS 11+**: Opens the general settings. **NOT** the bluetooth settings.
-  * Tested on a iPhone 7 with iOS 11.3.0 and iOS 11.3.1
+Opens the settings page of the app. Please see [here](https://developer.apple.com/documentation/uikit/uiapplicationopensettingsurlstring).
 
 ```js
 BluetoothStateManager.openSettings();
