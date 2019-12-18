@@ -1,20 +1,4 @@
 {
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "node": true,
-    "jest": true
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true,
-      "experimentalObjectRestSpread": true
-    },
-    "sourceType": "module"
-  },
-  "globals": {
-    "__DEV__": false
-  }
+  "root": true,
+  "extends": "@react-native-community"
 }
