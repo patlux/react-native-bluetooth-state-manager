@@ -1,30 +1,41 @@
 {
   "name": "react-native-bluetooth-state-manager",
   "description": "Manage the bluetooth state of your device ",
-  "version": "1.1.0",
+  "version": "0.0.0-development",
   "main": "src/index.js",
   "repository": "git+https://github.com/patlux/react-native-bluetooth-state-manager.git",
   "author": "Patrick Wozniak <email@patwoz.de>",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,json}": ["prettier --write", "git add"]
+    "lint": "eslint src/ --ext .js .",
+    "prettier": "prettier \"**/*.+(js|json|md)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "validate": "npm-run-all --parallel check-format lint",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {},
   "devDependencies": {
-    "babel-eslint": "8.2.3",
-    "eslint": "4.19.1",
-    "husky": "0.14.3",
-    "lint-staged": "7.0.5",
-    "prettier": "1.12.1"
+    "@react-native-community/eslint-config": "0.0.5",
+    "babel-eslint": "10.0.3",
+    "eslint": "6.7.2",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "1.19.1",
+    "semantic-release": "15.13.31"
   },
   "peerDependencies": {
     "prop-types": "15.6.1",
     "react": "^16.3.0",
     "react-native": "0.55.3"
   },
-  "keywords": ["React", "Native", "Bluetooth", "State", "Manager"]
+  "keywords": [
+    "React",
+    "Native",
+    "Bluetooth",
+    "State",
+    "Manager"
+  ]
 }

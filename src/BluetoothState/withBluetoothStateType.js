@@ -1,6 +1,6 @@
 import React from 'react';
 
-import BluetoothStateContext, { INITIAL_STATE } from './BluetoothStateContext';
+import BluetoothStateContext from './BluetoothStateContext';
 
 const isFn = _ => typeof _ === 'function';
 const renderChildren = (children, args) => (isFn(children) ? children(args) : children);

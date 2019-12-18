@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import React, { createContext } from 'react';
-import { NativeModules } from 'react-native';
+import React from 'react';
 
-import BluetoothStateManager from '../';
+import BluetoothStateManager from '../BluetoothStateManager';
 import BluetoothStateContext, { INITIAL_STATE } from './BluetoothStateContext';
 import withBluetoothStateType from './withBluetoothStateType';
 import { BluetoothStateTypesList } from '../BluetoothStateTypes';
