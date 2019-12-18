@@ -8,9 +8,9 @@ If you need further functionality like connecting and communicating to a device,
 
 ## Features
 
-* [Manage bluetooth state](#getstate)
-* [Open bluetooth settings page of the OS](#opensettings)
-* [Declarative API](#declarative-api)
+- [Manage bluetooth state](#getstate)
+- [Open bluetooth settings page of the OS](#opensettings)
+- [Declarative API](#declarative-api)
 
 ## Installation
 
@@ -27,6 +27,25 @@ npm install react-native-bluetooth-state-manager --save
 ```
 
 ## Linking
+
+### React-Native >= 0.60
+
+Beginning from 0.60 you don't need to link it anymore. For more see [here](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md).
+
+**iOS**
+
+For iOS you just need to install the pods.
+
+```sh
+cd ios/
+pod install
+cd ..
+```
+
+### React-Native < 0.60
+
+<details>
+<summary>Click here for instructions how to link it for react-native < 0.60</summary>
 
 ### Automatic
 
@@ -98,6 +117,8 @@ public class MainApplication extends Application implements ReactApplication {
 }
 ```
 
+</details>
+
 ## Usage
 
 ```javascript
@@ -164,9 +185,9 @@ Opens the bluetooth settings.
 
 Tested:
 
-* Android 6.0.1 (Huawei P8 Lite ALE-L21)
-* Android 7.1.1 (Galaxy J5 2016)
-* Android 8.0 (Galaxy S8+ SM-G955f)
+- Android 6.0.1 (Huawei P8 Lite ALE-L21)
+- Android 7.1.1 (Galaxy J5 2016)
+- Android 8.0 (Galaxy S8+ SM-G955f)
 
 ##### iOS
 
@@ -180,7 +201,7 @@ BluetoothStateManager.openSettings();
 
 Show a dialog that allows the user to turn on Bluetooth. More here: [Android documentation](https://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html#ACTION_REQUEST_ENABLE).
 
-* This function is **only** on **android** available.
+- This function is **only** on **android** available.
 
 ```js
 BluetoothStateManager.requestToEnable().then(result => {
@@ -193,8 +214,8 @@ BluetoothStateManager.requestToEnable().then(result => {
 
 Enables Bluetooth without further user interaction
 
-* This function is **only** on **android** available.
-* Needs the `BLUETOOTH_ADMIN` permission.
+- This function is **only** on **android** available.
+- Needs the `BLUETOOTH_ADMIN` permission.
 
 ```js
 BluetoothStateManager.enable().then(result => {
@@ -206,9 +227,9 @@ BluetoothStateManager.enable().then(result => {
 
 Disables Bluetooth without further user interaction
 
-* This function is **only** on **android** available.
+- This function is **only** on **android** available.
 
-* Needs the `BLUETOOTH_ADMIN` permission.
+- Needs the `BLUETOOTH_ADMIN` permission.
 
 ```js
 BluetoothStateManager.disable().then(result => {
@@ -269,8 +290,8 @@ The `children` prop of this component will rendered only when bluetooth is turne
 
 The `children` prop of this component will rendered only when bluetooth state is changing.
 
-* "PoweredOff" -> "PoweredOn"
-* "PoweredOn" -> "PoweredOff"
+- "PoweredOff" -> "PoweredOn"
+- "PoweredOn" -> "PoweredOff"
 
 ### `<BluetoothState.Unauthorized>`
 
@@ -354,7 +375,7 @@ import { BluetoothState } from 'react-native-bluetooth-state-manager';
 
 ## ToDo's
 
-* [ ] Add tests
+- [ ] Add tests
 
 ## Why?
 
