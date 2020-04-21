@@ -7,7 +7,7 @@ const BluetoothStateManager = {
   onStateChange: (callback, emitCurrentState) => {
     if (emitCurrentState) {
       BluetoothStateManager.getState().then(
-        bluetoothState => typeof callback === 'function' && callback(bluetoothState)
+        (bluetoothState) => typeof callback === 'function' && callback(bluetoothState)
       );
     }
     return BluetoothStateManager.addEventListener(

@@ -41,8 +41,8 @@ class BluetoothStatus extends React.PureComponent {
     this.removeBluetoothStateListener();
   }
 
-  setContextState = nextContext => {
-    this.setState(prevState => {
+  setContextState = (nextContext) => {
+    this.setState((prevState) => {
       const resolvedNextState =
         typeof nextContext === 'function' ? nextContext(prevState.context) : nextContext;
       return {
@@ -76,7 +76,7 @@ class BluetoothStatus extends React.PureComponent {
     this.bluetoothStateListener && this.bluetoothStateListener.remove();
   };
 
-  onBluetoothStateChange = bluetoothState => {
+  onBluetoothStateChange = (bluetoothState) => {
     this.setContextState({ bluetoothState });
   };
 
@@ -94,7 +94,7 @@ class BluetoothStatus extends React.PureComponent {
 }
 
 BluetoothStateTypesList.forEach(
-  bluetoothStateType =>
+  (bluetoothStateType) =>
     (BluetoothStatus[bluetoothStateType] = withBluetoothStateType(bluetoothStateType))
 );
 
