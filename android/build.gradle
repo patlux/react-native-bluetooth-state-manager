@@ -13,12 +13,12 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.1.0"
     }
