@@ -3,12 +3,21 @@
 #import "RNBluetoothStateManager.h"
 
 @implementation RNBluetoothStateManager{
-  CBCentralManager *cb;
+  CBCentralManager *internalcb;
   bool hasListeners;
+}
+
+-(CBCentralManager *)cb {
+    if (internalcb == nil) {
+        internalcb = [[CBCentralManager alloc] initWithDelegate:nil queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey: @NO}];
+        [internalcb setDelegate:self];
+    }
+    return internalcb;
 }
 
 // Override
 -(void)startObserving {
+  [self cb];
   hasListeners = YES;
 }
 
@@ -31,8 +40,6 @@ RCT_EXPORT_MODULE()
 -(instancetype)init{
   self = [super init];
   if(self){
-    cb = [[CBCentralManager alloc] initWithDelegate:nil queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey: @NO}];
-    [cb setDelegate:self];
   }
   return self;
 }
@@ -51,7 +58,7 @@ NSString *const EVENT_BLUETOOTH_STATE_CHANGE = @"EVENT_BLUETOOTH_STATE_CHANGE";
 // BLUETOOTH STATE
 
 RCT_EXPORT_METHOD(getState:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-  NSString *stateName = [self bluetoothStateToString:cb.state];
+  NSString *stateName = [self bluetoothStateToString:[self cb].state];
   resolve(stateName);
 }
 
