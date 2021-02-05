@@ -125,6 +125,16 @@ public class MainApplication extends Application implements ReactApplication {
 import BluetoothStateManager from 'react-native-bluetooth-state-manager';
 ```
 
+**iOS**
+
+You must provide a short description why you need access to bluetooth in your app. Otherwise your app will crash when requesting for bluetooth:
+
+```
+This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSBluetoothAlwaysUsageDescription key with a string value explaining to the user how the app uses this data.
+```
+
+See: https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothalwaysusagedescription
+
 ## API
 
 An example you will find in `example/app/ExampleWithApi.js`
@@ -153,7 +163,7 @@ An example you will find in `example/app/ExampleWithApi.js`
 Returns the current state of the bluetooth service.
 
 ```js
-BluetoothStateManager.getState().then(bluetoothState => {
+BluetoothStateManager.getState().then((bluetoothState) => {
   switch (bluetoothState) {
     case 'Unknown':
     case 'Resetting':
@@ -172,7 +182,7 @@ BluetoothStateManager.getState().then(bluetoothState => {
 Listen for bluetooth state changes.
 
 ```js
-BluetoothStateManager.onStateChange(bluetoothState => {
+BluetoothStateManager.onStateChange((bluetoothState) => {
   // do something...
 }, true /*=emitCurrentState*/);
 ```
@@ -204,7 +214,7 @@ Show a dialog that allows the user to turn on Bluetooth. More here: [Android doc
 - This function is **only** on **android** available.
 
 ```js
-BluetoothStateManager.requestToEnable().then(result => {
+BluetoothStateManager.requestToEnable().then((result) => {
   // result === true -> user accepted to enable bluetooth
   // result === false -> user denied to enable bluetooth
 });
@@ -218,7 +228,7 @@ Enables Bluetooth without further user interaction
 - Needs the `BLUETOOTH_ADMIN` permission.
 
 ```js
-BluetoothStateManager.enable().then(result => {
+BluetoothStateManager.enable().then((result) => {
   // do something...
 });
 ```
@@ -232,7 +242,7 @@ Disables Bluetooth without further user interaction
 - Needs the `BLUETOOTH_ADMIN` permission.
 
 ```js
-BluetoothStateManager.disable().then(result => {
+BluetoothStateManager.disable().then((result) => {
   // do something...
 });
 ```
@@ -252,7 +262,7 @@ Callback for when the bluetooth state changed
 ```js
 BluetoothStateManager.addEventListener(
   BluetoothStateManager.EVENT_BLUETOOTH_STATE_CHANGE,
-  bluetoothState => {
+  (bluetoothState) => {
     // do something...
   }
 );
