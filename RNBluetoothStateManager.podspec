@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "RNBluetoothStateManager"
-  s.version      = "1.1.0"
+  s.version      = "0.0.0-development"
   s.summary      = "RNBluetoothStateManager"
   s.description  = <<-DESC
                   RNBluetoothStateManager

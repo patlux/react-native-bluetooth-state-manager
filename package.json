@@ -15,7 +15,6 @@
     "validate": "npm-run-all --parallel check-format lint",
     "semantic-release": "semantic-release"
   },
-  "dependencies": {},
   "devDependencies": {
     "@patwoz/prettier-config": "1.1.0",
     "@react-native-community/eslint-config": "0.0.5",
@@ -26,7 +25,8 @@
     "lint-staged": "9.5.0",
     "npm-run-all": "4.1.5",
     "prettier": "1.19.1",
-    "semantic-release": "17.2.3"
+    "semantic-release": "17.2.3",
+    "semantic-release-plugin-update-version-in-files": "1.1.0"
   },
   "peerDependencies": {
     "prop-types": "*",
