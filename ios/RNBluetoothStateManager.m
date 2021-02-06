@@ -8,41 +8,30 @@
 }
 
 -(CBCentralManager *)cb {
+    // Calling init() for the first time will ask the user to give the app the permission
+    // To prevent this happening on app start, we will delay this for the first call of `getState()`
     if (internalcb == nil) {
-        internalcb = [[CBCentralManager alloc] initWithDelegate:nil queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey: @NO}];
-        [internalcb setDelegate:self];
+        internalcb = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey: @NO}];
+        [NSThread sleepForTimeInterval: 0.05]; // Calling .state directly after init() will give us .Unknown. So just sleep for 50ms to prevent this
     }
     return internalcb;
 }
 
-// Override
 -(void)startObserving {
   [self cb];
   hasListeners = YES;
 }
 
-// Override
 -(void)stopObserving {
   hasListeners = NO;
 }
 
 + (BOOL)requiresMainQueueSetup
 {
-  return YES;
+  return NO;
 }
 
-- (dispatch_queue_t)methodQueue
-{
-  return dispatch_get_main_queue();
-}
 RCT_EXPORT_MODULE()
-
--(instancetype)init{
-  self = [super init];
-  if(self){
-  }
-  return self;
-}
 
 NSString *const EVENT_BLUETOOTH_STATE_CHANGE = @"EVENT_BLUETOOTH_STATE_CHANGE";
 
