@@ -2,7 +2,12 @@ import RNBluetoothStateManager, { EventEmitter } from './RNBluetoothStateManager
 
 const BluetoothStateManager = {
   EVENT_BLUETOOTH_STATE_CHANGE: RNBluetoothStateManager.EVENT_BLUETOOTH_STATE_CHANGE,
-  addEventListener: (name, callback) => EventEmitter.addListener(name, callback),
+  addEventListener: (name, callback) => {
+    const subscription = EventEmitter.addListener(name, callback);
+    return {
+      remove: subscription.remove.bind(subscription),
+    };
+  },
   getState: () => RNBluetoothStateManager.getState(),
   onStateChange: (callback, emitCurrentState) => {
     if (emitCurrentState) {
