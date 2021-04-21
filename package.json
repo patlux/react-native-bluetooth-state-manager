@@ -6,6 +6,7 @@
   "repository": "git+https://github.com/patlux/react-native-bluetooth-state-manager.git",
   "author": "Patrick Wozniak <email@patwoz.de>",
   "license": "MIT",
+  "types": "./types.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/ --ext .js .",
@@ -26,7 +27,8 @@
     "npm-run-all": "4.1.5",
     "prettier": "1.19.1",
     "semantic-release": "17.2.3",
-    "semantic-release-plugin-update-version-in-files": "1.1.0"
+    "semantic-release-plugin-update-version-in-files": "1.1.0",
+    "typescript": "4.5.4"
   },
   "peerDependencies": {
     "prop-types": "*",
