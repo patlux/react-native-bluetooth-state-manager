@@ -25,7 +25,7 @@ allprojects {
     }
     project.ext {
         myBuildToolsVersion="27.0.3"
-        myMinSdkVersion=18 /* = 4.1 Jelly Bean */
+        myMinSdkVersion=21 /* = 5.0 Lollipop */
         myTargetSdkVersion=27 /* = 8.1 Oreo */
         myCompileSdkVersion=27 /* = 8.1 Oreo */
         myAppCompatVersion="27.1.1"
