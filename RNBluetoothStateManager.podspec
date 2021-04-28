@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.version      = "2.0.0"
   s.summary      = "RNBluetoothStateManager"
   s.description  = <<-DESC
-                  RNBluetoothStateManager
+                  RNBluetoothStateManager handle bluetooth state
                    DESC
   s.homepage     = "https://github.com/patlux/react-native-bluetooth-state-manager"
   s.license      = "MIT"
