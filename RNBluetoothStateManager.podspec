@@ -1,16 +1,15 @@
-
 Pod::Spec.new do |s|
   s.name         = "RNBluetoothStateManager"
-  s.version      = "0.0.0-development"
+  s.version      = "2.0.0"
   s.summary      = "RNBluetoothStateManager"
   s.description  = <<-DESC
-                  RNBluetoothStateManager
+                  RNBluetoothStateManager handle bluetooth state
                    DESC
-  s.homepage     = "https://github.com/patlux/react-native-bluetooth-state-manager"
+  s.homepage     = "https://github.com/nitrique/react-native-bluetooth-state-manager"
   s.license      = "MIT"
   s.author       = { "author" => "email@patwoz.de" }
   s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/patlux/react-native-bluetooth-state-manager.git", :tag => "master" }
+  s.source       = { :git => "https://github.com/nitrique/react-native-bluetooth-state-manager.git", :tag => "master" }
   s.source_files = "ios/*.{h,m}"
   s.requires_arc = true
 
@@ -19,4 +18,3 @@ Pod::Spec.new do |s|
   #s.dependency "others"
 
 end
-
