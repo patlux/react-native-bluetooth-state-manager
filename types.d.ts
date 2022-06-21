@@ -1,3 +1,5 @@
+import { EventSubscription } from "react-native";
+
 declare module 'react-native-bluetooth-state-manager' {
   type BluetoothState =
     | 'Unknown'
@@ -11,7 +13,7 @@ declare module 'react-native-bluetooth-state-manager' {
   function onStateChange(
     listener: (bluetoothState: BluetoothState) => void,
     emitCurrentState: boolean
-  ): Promise<string>;
+  ): EventSubscription;
   function openSettings(): Promise<null>;
   function requestToEnable(): Promise<Boolean>;
   function enable(): Promise<null>;
