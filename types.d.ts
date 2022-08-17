@@ -1,4 +1,4 @@
-import { EventSubscription } from "react-native";
+import { EventSubscription } from 'react-native';
 
 declare module 'react-native-bluetooth-state-manager' {
   type BluetoothState =
