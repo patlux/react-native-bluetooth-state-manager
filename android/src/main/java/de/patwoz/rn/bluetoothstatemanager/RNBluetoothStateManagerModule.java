@@ -115,12 +115,10 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void addListener(String eventName) {
-  }
+  public void addListener(String eventName) {}
 
   @ReactMethod
-  public void removeListeners(Integer count) {
-  }
+  public void removeListeners(Integer count) {}
 
   @ReactMethod
   public void disable(Promise promise) {
