@@ -204,7 +204,7 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
         if (resultCode == Activity.RESULT_CANCELED) {
           requestToEnablePromise.reject("CANCELED", "The user canceled the action.");
         } else if (resultCode == Activity.RESULT_OK) {
-          requestToEnablePromise.resolve(null);
+          requestToEnablePromise.resolve(true);
         } else {
           Log.w(
                   "RNBluetoothStateManager",
