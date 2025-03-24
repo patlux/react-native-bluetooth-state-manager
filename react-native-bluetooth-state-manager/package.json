@@ -1,0 +1,85 @@
+{
+  "name": "react-native-bluetooth-state-manager",
+  "description": "Manage the bluetooth state of your device",
+  "version": "1.3.5",
+  "repository": "git+https://github.com/patlux/react-native-bluetooth-state-manager.git",
+  "author": "Patrick Wozniak <email@patwoz.de> (https://patwoz.dev)",
+  "license": "MIT",
+  "main": "./lib/commonjs/index.js",
+  "module": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "src",
+    "react-native.config.js",
+    "lib",
+    "nitrogen",
+    "android/build.gradle",
+    "android/gradle.properties",
+    "android/CMakeLists.txt",
+    "android/src",
+    "ios/**/*.h",
+    "ios/**/*.m",
+    "ios/**/*.mm",
+    "ios/**/*.cpp",
+    "ios/**/*.swift",
+    "app.plugin.js",
+    "*.podspec",
+    "README.md"
+  ],
+  "scripts": {
+    "postinstall": "bun build || exit 0;",
+    "build": "rm -rf lib && bun typecheck && bob build",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf android/build node_modules/**/android/build lib",
+    "codegen": "bun typecheck && nitro-codegen --logLevel=\"debug\"",
+    "postcodegen": "bun run build"
+  },
+  "keywords": [
+    "react-native",
+    "React",
+    "Native",
+    "Bluetooth",
+    "State",
+    "Manager"
+  ],
+  "bugs": {
+    "url": "https://github.com/patlux/react-native-bluetooth-state-manager/issues"
+  },
+  "homepage": "https://github.com/patlux/react-native-bluetooth-state-manager",
+  "devDependencies": {
+    "@types/react": "^18.3.4",
+    "nitro-codegen": "0.25.2",
+    "prettier": "^3.3.3",
+    "react": "18.3.1",
+    "react-native": "0.77.0",
+    "react-native-builder-bob": "^0.34.0",
+    "react-native-nitro-modules": "0.25.2",
+    "typescript": "5.0.4"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-nitro-modules": "*"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": false
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      [
+        "typescript",
+        {
+          "project": "tsconfig.json"
+        }
+      ]
+    ]
+  }
+}

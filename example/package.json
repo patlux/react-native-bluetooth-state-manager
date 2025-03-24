@@ -1,35 +1,47 @@
 {
-  "name": "RNBluetoothStateManagerExample",
-  "version": "1.1.0",
-  "author": "Patrick Wozniak <email@patwoz.de>",
-  "license": "MIT",
-  "keywords": ["react-native"],
+  "name": "example-app",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios --simulator='iPhone 16'",
+    "lint": "eslint .",
+    "start": "react-native start --reset-cache",
     "test": "jest",
-    "run-android": "react-native run-android",
-    "run-ios": "react-native run-ios",
-    "log-android": "adb logcat *:S ReactNative:V ReactNativeJS:V",
-    "menu-android": "adb shell input keyevent 82"
+    "pod": "pod install --project-directory=ios && cd .."
   },
   "dependencies": {
-    "react": "16.4.1",
-    "react-native": "0.56.0",
-    "react-native-app-state": "1.0.2",
-    "react-native-paper": "1.7.0",
-    "react-native-vector-icons": "4.6.0"
+    "@react-navigation/native": "^7.0.18",
+    "@react-navigation/native-stack": "^7.3.2",
+    "@tanstack/react-query": "^5.69.0",
+    "react": "18.3.1",
+    "react-native": "0.77.0",
+    "react-native-nitro-modules": "0.25.2",
+    "react-native-permissions": "^5.3.0",
+    "react-native-safe-area-context": "^5.3.0",
+    "react-native-screens": "^4.9.2"
   },
   "devDependencies": {
-    "babel-jest": "22.4.3",
-    "babel-plugin-module-resolver": "3.1.1",
-    "babel-preset-react-native": "5.0.2",
-    "glob-to-regexp": "0.4.0",
-    "jest": "22.4.3",
-    "metro-bundler": "0.22.1",
-    "react-test-renderer": "16.3.2"
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
+    "@babel/runtime": "^7.25.0",
+    "@react-native-community/cli": "15.0.1",
+    "@react-native-community/cli-platform-android": "15.0.1",
+    "@react-native-community/cli-platform-ios": "15.0.1",
+    "@react-native/babel-preset": "0.77.0",
+    "@react-native/eslint-config": "0.77.0",
+    "@react-native/metro-config": "0.77.0",
+    "@react-native/typescript-config": "0.77.0",
+    "@types/jest": "^29.5.13",
+    "@types/react": "^18.2.6",
+    "@types/react-test-renderer": "^18.0.0",
+    "eslint": "^8.19.0",
+    "jest": "^29.6.3",
+    "prettier": "2.8.8",
+    "react-test-renderer": "18.3.1",
+    "typescript": "5.0.4"
   },
-  "jest": {
-    "preset": "react-native"
+  "engines": {
+    "node": ">=18"
   }
 }
