@@ -23,7 +23,7 @@ cd ios && bunx pod-install
 
 ## Usage
 
-```javascript
+```tsx
 import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
 ```
 
@@ -67,17 +67,17 @@ An example is under `example/App.tsx`
 
 Hook that returns the current state of the bluetooth service.
 
-````tsx
-import { useBluetoothState } from 'react-native-bluetooth-state-manager'
+```tsx
+import { useBluetoothState } from "react-native-bluetooth-state-manager";
 
-const bluetoothState = useBluetoothState()
+const bluetoothState = useBluetoothState();
 switch (bluetoothState) {
-  case 'Unknown':
-  case 'Resetting':
-  case 'Unsupported':
-  case 'Unauthorized':
-  case 'PoweredOff':
-  case 'PoweredOn':
+  case "Unknown":
+  case "Resetting":
+  case "Unsupported":
+  case "Unauthorized":
+  case "PoweredOff":
+  case "PoweredOn":
   default:
     break;
 }
@@ -88,15 +88,15 @@ switch (bluetoothState) {
 Returns the current state of the bluetooth service.
 
 ```tsx
-import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
 const bluetoothState = await BluetoothStateManager.getState();
 switch (bluetoothState) {
-  case 'Unknown':
-  case 'Resetting':
-  case 'Unsupported':
-  case 'Unauthorized':
-  case 'PoweredOff':
-  case 'PoweredOn':
+  case "Unknown":
+  case "Resetting":
+  case "Unsupported":
+  case "Unauthorized":
+  case "PoweredOff":
+  case "PoweredOn":
   default:
     break;
 }
@@ -107,15 +107,15 @@ switch (bluetoothState) {
 Returns the current state synchronous of the bluetooth service.
 
 ```tsx
-import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
 const bluetoothState = BluetoothStateManager.getStateSync();
 switch (bluetoothState) {
-  case 'Unknown':
-  case 'Resetting':
-  case 'Unsupported':
-  case 'Unauthorized':
-  case 'PoweredOff':
-  case 'PoweredOn':
+  case "Unknown":
+  case "Resetting":
+  case "Unsupported":
+  case "Unauthorized":
+  case "PoweredOff":
+  case "PoweredOn":
   default:
     break;
 }
@@ -126,7 +126,7 @@ switch (bluetoothState) {
 Listen for bluetooth state changes.
 
 ```tsx
-import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
 BluetoothStateManager.addListener((bluetoothState) => {
   // do something...
 }, true /*=emitCurrentState*/);
@@ -194,4 +194,7 @@ In several of my projects I'm working on, I had to integrate several third-party
 ## License
 
 MIT
-````
+
+```
+
+```
