@@ -21,7 +21,7 @@ cd ios && bunx pod-install
 # replace bun with npm/yarn/pnpm and bunx with npx
 ```
 
-## Usage
+## Setup
 
 ```tsx
 import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
@@ -37,6 +37,56 @@ This app has crashed because it attempted to access privacy-sensitive data witho
 
 See: https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothalwaysusagedescription
 
+**Android**
+
+To use `requestToEnable()` and `requestToDisable()` on android, you have to add `BLUETOOTH_CONNECT` permission to your `AndroidManifest.xml`:
+
+```diff
+  <manifest xmlns:android="http://schemas.android.com/apk/res/android">
++    <uses-permission android:name="android.permission.BLUETOOTH_CONNECt"/>
+  </manifest>
+```
+
+`BLUETOOTH_CONNECT` is a runtime permission, that means you must ask the user at runtime for permission. For that, we recommend [react-native-permissions](https://github.com/zoontek/react-native-permissions/tree/master).
+
+## Usage
+
+```tsx
+import {
+  useBluetoothState,
+  BluetoothStateManager,
+  BluetoothState,
+} from "react-native-bluetooth-state-manager";
+
+## Get bluetooth state
+
+# hook
+const bluetootState = useBluetoothState();
+# synchronous
+const bluetootState = BluetoothStateManager.getStateSync();
+# synchronous
+const bluetootState = await BluetoothStateManager.getState();
+# Event listener
+const [bluetootState, setBluetoothState] = useState<BluetoothState>();
+useEffect(() => {
+  const remove = BluetoothStateManager.addListener((state) => {
+    setBluetoothState(state);
+  });
+  return remove;
+}, []);
+
+## Open settings page
+await BluetoothStateManager.openSettings()
+
+## Android only
+
+# Ask user to enable bluetooth
+await BluetoothStateManager.requestToEnable()
+
+# Ask user to disable bluetooth
+await BluetoothStateManager.requestToDisable()
+```
+
 ## API
 
 An example is under `example/App.tsx`
@@ -50,16 +100,6 @@ An example is under `example/App.tsx`
 | [openSettings()](#opensettings)                         | `Promise<null>`           | Android, iOS | Opens the bluetooth settings. Please see below for more details. |
 | [requestToEnable()](#requesttoenable)                   | `Promise<void>`           | Android      | Show a dialog that allows the user to turn on Bluetooth.         |
 | [requestToDisable()](#requesttodisable)                 | `Promise<void>`           | Android      | Show a dialog that allows the user to turn off Bluetooth.        |
-
-**Important**: To use `requestToEnable()` and `requestToDisable()` on android, you have to add `BLUETOOTH_CONNECT` permission to your `AndroidManifest.xml`:
-
-```diff
-  <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECt"/>
-  </manifest>
-```
-
-`BLUETOOTH_CONNECT` is a runtime permission, that means you must ask the user at runtime for permission. For that, we recommend [react-native-permissions](https://github.com/zoontek/react-native-permissions/tree/master).
 
 ---
 
@@ -180,21 +220,10 @@ try {
 }
 ```
 
-## ToDo's
-
-- [ ] Add tests
-
 ## Why?
 
 ##### Why not just using [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx)?
 
-Because it's to over bloated for my purpose.
-In several of my projects I'm working on, I had to integrate several third-party SDK which communicates with different bluetooth devices (on the native side). So the only functionality I needed there (on the javascript side), was to check if the bluetooth is enabled to start the third-party SDK.
+Because it's too bloated for my needs.
 
-## License
-
-MIT
-
-```
-
-```
+In several of my projects, I've had to integrate various third-party SDKs that communicate with different Bluetooth devices on the native side. The only functionality I needed on the JavaScript side was checking whether Bluetooth was enabled before starting the third-party SDK.
