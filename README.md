@@ -58,15 +58,15 @@ import {
   BluetoothState,
 } from "react-native-bluetooth-state-manager";
 
-## Get bluetooth state
+// Get bluetooth state
 
-# hook
+// hook
 const bluetootState = useBluetoothState();
-# synchronous
+// synchronous
 const bluetootState = BluetoothStateManager.getStateSync();
-# synchronous
+// synchronous
 const bluetootState = await BluetoothStateManager.getState();
-# Event listener
+// Event listener
 const [bluetootState, setBluetoothState] = useState<BluetoothState>();
 useEffect(() => {
   const remove = BluetoothStateManager.addListener((state) => {
@@ -75,16 +75,16 @@ useEffect(() => {
   return remove;
 }, []);
 
-## Open settings page
-await BluetoothStateManager.openSettings()
+// Open settings page
+await BluetoothStateManager.openSettings();
 
-## Android only
+// Android only
 
-# Ask user to enable bluetooth
-await BluetoothStateManager.requestToEnable()
+// Ask user to enable bluetooth
+await BluetoothStateManager.requestToEnable();
 
-# Ask user to disable bluetooth
-await BluetoothStateManager.requestToDisable()
+// Ask user to disable bluetooth
+await BluetoothStateManager.requestToDisable();
 ```
 
 ## API
