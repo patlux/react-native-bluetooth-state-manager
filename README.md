@@ -64,7 +64,7 @@ import {
 const bluetootState = useBluetoothState();
 // synchronous
 const bluetootState = BluetoothStateManager.getStateSync();
-// synchronous
+// asynchronous
 const bluetootState = await BluetoothStateManager.getState();
 // Event listener
 const [bluetootState, setBluetoothState] = useState<BluetoothState>();
