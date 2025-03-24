@@ -1,16 +1,17 @@
 # react-native-bluetooth-state-manager
 
-[![npm version](https://badge.fury.io/js/react-native-bluetooth-state-manager.svg)](https://badge.fury.io/js/react-native-bluetooth-state-manager) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![npm version](https://badge.fury.io/js/react-native-bluetooth-state-manager.svg)](https://badge.fury.io/js/react-native-bluetooth-state-manager)
 
 The only purpose of this library is to manage the Bluetooth state. Not more, not less.
 
 If you need further functionality like connecting and communicating to a device, please look at [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx).
 
-## Features
+## Table Of Content
 
-- [Manage bluetooth state](#getstate)
-- [Open bluetooth settings page of the OS](#opensettings)
-- [Declarative API](#declarative-api)
+- [Installation](#installation)
+- [Setup](#setup)
+- [Usage](#usage)
+- [API](#api)
 
 ## Installation
 
