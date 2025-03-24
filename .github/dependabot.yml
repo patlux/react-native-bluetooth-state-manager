@@ -1,0 +1,44 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+
+  - package-ecosystem: "gradle"
+    directories:
+      - "/package/android/"
+      - "/example/android/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "nitro-core"
+      - "nitrogen"
+      - "dependencies"
+      - "kotlin"
+
+  - package-ecosystem: "npm"
+    directories:
+      - "/package/"
+      - "/example/"
+    schedule:
+      interval: "daily"
+    labels:
+      - "nitro-core"
+      - "dependencies"
+      - "typescript"
+      - "nitrogen"
+
+    groups:
+      react-native-cli:
+        patterns:
+          - "@react-native-community/cli*"
+      babel:
+        patterns:
+          - "@babel/*"
+      react-native:
+        patterns:
+          - "@react-native/*"

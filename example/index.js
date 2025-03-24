@@ -1,4 +1,9 @@
-import { AppRegistry } from 'react-native';
-import App from './app/index';
+/**
+ * @format
+ */
 
-AppRegistry.registerComponent('RNBluetoothStateManagerExample', () => App);
+import {AppRegistry} from 'react-native';
+import App from './App';
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);
