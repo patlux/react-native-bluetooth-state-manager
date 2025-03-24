@@ -14,115 +14,17 @@ If you need further functionality like connecting and communicating to a device,
 
 ## Installation
 
-Using [Yarn](https://yarnpkg.com/): (recommended)
-
 ```shell
-yarn add react-native-bluetooth-state-manager
+bun add react-native-nitro-modules react-native-bluetooth-state-manager
+cd ios && bunx pod-install
+
+# replace bun with npm/yarn/pnpm and bunx with npx
 ```
-
-Using [npm](https://www.npmjs.com/):
-
-```shell
-npm install react-native-bluetooth-state-manager --save
-```
-
-## Linking
-
-### React-Native >= 0.60
-
-Beginning from 0.60 you don't need to link it anymore. For more see [here](https://github.com/react-native-community/cli/blob/master/docs/autolinking.md).
-
-**iOS**
-
-For iOS you just need to install the pods.
-
-```sh
-cd ios/
-pod install
-cd ..
-```
-
-### React-Native < 0.60
-
-<details>
-<summary>Click here for instructions how to link it for react-native < 0.60</summary>
-
-### Automatic
-
-Run `react-native link react-native-bluetooth-state-manager`
-
-### Manual
-
-#### iOS
-
-##### With cocoapods
-
-Append the following lines to your `ios/Podfile`:
-
-```diff
-target '<your-project>' do
-  ...
-+ pod 'RNBluetoothStateManager', :path => '../node_modules/react-native-bluetooth-state-manager'
-end
-```
-
-##### Without cocoapods
-
-1.  In XCode, in the project navigator, right click `Libraries` ➜ `Add Files to [your project's name]`
-2.  Go to `node_modules` ➜ `react-native-bluetooth-state-manager` and add `RNBluetoothStateManager.xcodeproj`
-3.  In XCode, in the project navigator, select your project. Add `libRNBluetoothStateManager.a` to your project's `Build Phases` ➜ `Link Binary With Libraries`
-4.  Run your project (`Cmd+R`)<
-
-#### Android
-
-##### Manually
-
-1.  in `android/settings.gradle`:
-
-```diff
-...
-include ':app'
-+ include ':react-native-bluetooth-state-manager'
-+ project(':react-native-bluetooth-state-manager').projectDir = new File(rootProject.projectDir,   '../node_modules/react-native-bluetooth-state-manager/android')
-```
-
-2.  in `android/app/build.gradle`:
-
-```diff
-dependencies {
-+  compile project(':react-native-bluetooth-state-manager')
-  ...
-  compile "com.facebook.react:react-native:+"  // From node_modules
-}
-```
-
-3.  in `android/app/src/main/java/[...]/MainApplication.java`
-
-```diff
-+ import de.patwoz.rn.bluetoothstatemanager.RNBluetoothStateManagerPackage;
-
-public class MainApplication extends Application implements ReactApplication {
-  // ...
-
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage(),
-+         new RNBluetoothStateManagerPackage()
-      );
-    }
-  };
-
-}
-```
-
-</details>
 
 ## Usage
 
 ```javascript
-import BluetoothStateManager from 'react-native-bluetooth-state-manager';
+import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
 ```
 
 **iOS**
@@ -137,52 +39,95 @@ See: https://developer.apple.com/documentation/bundleresources/information_prope
 
 ## API
 
-An example you will find in `example/app/ExampleWithApi.js`
+An example is under `example/App.tsx`
 
-| Method                                                      | Return Type        | OS           | Description                                                      |
-| ----------------------------------------------------------- | ------------------ | ------------ | ---------------------------------------------------------------- |
-| [getState()](#getstate)                                     | `Promise<String>`  | Android, iOS | Returns the current state of the bluetooth service.              |
-| [onStateChange(listener, emitCurrentState)](#onstatechange) | `Subscription`     | Android, iOS | Listen for bluetooth state changes.                              |
-| [openSettings()](#opensettings)                             | `Promise<null>`    | Android, iOS | Opens the bluetooth settings. Please see below for more details. |
-| [requestToEnable()](#requesttoenable)                       | `Promise<Boolean>` | Android      | Show a dialog that allows the user to turn on Bluetooth.         |
-| [enable()](#enable)                                         | `Promise<null>`    | Android      | Enables Bluetooth without further user interaction.              |
-| [disable()](#disable)                                       | `Promise<null>`    | Android      | Disables Bluetooth without further user interaction.             |
+| Method                                                  | Return Type               | OS           | Description                                                      |
+| ------------------------------------------------------- | ------------------------- | ------------ | ---------------------------------------------------------------- |
+| [useBluetoothState()](#usebluetoothstate)               | `BluetoothState`          | Android, iOS | Hook that returns the current state of the bluetooth service.    |
+| [getState()](#getstate)                                 | `Promise<BluetoothState>` | Android, iOS | Returns the current state of the bluetooth service.              |
+| [getStateSync()](#getstatesync)                         | `BluetoothState`          | Android, iOS | Returns the current state synchronous of the bluetooth service.  |
+| [addListener(listener, emitCurrentState)](#addlistener) | `Subscription`            | Android, iOS | Listen for bluetooth state changes.                              |
+| [openSettings()](#opensettings)                         | `Promise<null>`           | Android, iOS | Opens the bluetooth settings. Please see below for more details. |
+| [requestToEnable()](#requesttoenable)                   | `Promise<void>`           | Android      | Show a dialog that allows the user to turn on Bluetooth.         |
+| [requestToDisable()](#requesttodisable)                 | `Promise<void>`           | Android      | Show a dialog that allows the user to turn off Bluetooth.        |
 
-**Important**: To use `enable()` and `disable()` on android, you have to add `BLUETOOTH_ADMIN` permission to your `AndroidManifest.xml`:
+**Important**: To use `requestToEnable()` and `requestToDisable()` on android, you have to add `BLUETOOTH_CONNECT` permission to your `AndroidManifest.xml`:
 
 ```diff
   <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
++    <uses-permission android:name="android.permission.BLUETOOTH_CONNECt"/>
   </manifest>
 ```
 
+`BLUETOOTH_CONNECT` is a runtime permission, that means you must ask the user at runtime for permission. For that, we recommend [react-native-permissions](https://github.com/zoontek/react-native-permissions/tree/master).
+
 ---
+
+### useBluetoothState()
+
+Hook that returns the current state of the bluetooth service.
+
+````tsx
+import { useBluetoothState } from 'react-native-bluetooth-state-manager'
+
+const bluetoothState = useBluetoothState()
+switch (bluetoothState) {
+  case 'Unknown':
+  case 'Resetting':
+  case 'Unsupported':
+  case 'Unauthorized':
+  case 'PoweredOff':
+  case 'PoweredOn':
+  default:
+    break;
+}
+```
 
 ### getState()
 
 Returns the current state of the bluetooth service.
 
-```js
-BluetoothStateManager.getState().then((bluetoothState) => {
-  switch (bluetoothState) {
-    case 'Unknown':
-    case 'Resetting':
-    case 'Unsupported':
-    case 'Unauthorized':
-    case 'PoweredOff':
-    case 'PoweredOn':
-    default:
-      break;
-  }
-});
+```tsx
+import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+const bluetoothState = await BluetoothStateManager.getState();
+switch (bluetoothState) {
+  case 'Unknown':
+  case 'Resetting':
+  case 'Unsupported':
+  case 'Unauthorized':
+  case 'PoweredOff':
+  case 'PoweredOn':
+  default:
+    break;
+}
 ```
 
-### onStateChange(listener, emitCurrentState)
+### getStateSync()
+
+Returns the current state synchronous of the bluetooth service.
+
+```tsx
+import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+const bluetoothState = BluetoothStateManager.getStateSync();
+switch (bluetoothState) {
+  case 'Unknown':
+  case 'Resetting':
+  case 'Unsupported':
+  case 'Unauthorized':
+  case 'PoweredOff':
+  case 'PoweredOn':
+  default:
+    break;
+}
+```
+
+### addListener(listener, emitCurrentState)
 
 Listen for bluetooth state changes.
 
-```js
-BluetoothStateManager.onStateChange((bluetoothState) => {
+```tsx
+import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+BluetoothStateManager.addListener((bluetoothState) => {
   // do something...
 }, true /*=emitCurrentState*/);
 ```
@@ -203,7 +148,7 @@ Tested:
 
 Opens the settings page of the app. Please see [here](https://developer.apple.com/documentation/uikit/uiapplicationopensettingsurlstring).
 
-```js
+```tsx
 BluetoothStateManager.openSettings();
 ```
 
@@ -213,174 +158,26 @@ Show a dialog that allows the user to turn on Bluetooth. More here: [Android doc
 
 - This function is **only** on **android** available.
 
-```js
-BluetoothStateManager.requestToEnable().then((result) => {
-  // result === true -> user accepted to enable bluetooth
-  // result === false -> user denied to enable bluetooth
-});
-```
-
-### enable()
-
-Enables Bluetooth without further user interaction
-
-- This function is **only** on **android** available.
-- Needs the `BLUETOOTH_ADMIN` permission.
-
-```js
-BluetoothStateManager.enable().then((result) => {
-  // do something...
-});
-```
-
-### disable()
-
-Disables Bluetooth without further user interaction
-
-- This function is **only** on **android** available.
-
-- Needs the `BLUETOOTH_ADMIN` permission.
-
-```js
-BluetoothStateManager.disable().then((result) => {
-  // do something...
-});
-```
-
-## EVENTS
-
-| Name                                                          | Description                                   |
-| ------------------------------------------------------------- | --------------------------------------------- |
-| [EVENT_BLUETOOTH_STATE_CHANGE](#event_bluetooth_state_change) | Callback for when the bluetooth state changed |
-
----
-
-### EVENT_BLUETOOTH_STATE_CHANGE
-
-Callback for when the bluetooth state changed
-
-```js
-BluetoothStateManager.addEventListener(
-  BluetoothStateManager.EVENT_BLUETOOTH_STATE_CHANGE,
-  (bluetoothState) => {
-    // do something...
-  }
-);
-
-// recommended: use the `onStateChange` function.
-```
-
-## Declarative API
-
-The declarative way uses the new context api of React 16.3.
-
-```javascript
-import { BluetoothState } from 'react-native-bluetooth-state-manager';
-```
-
-### `<BluetoothState>`
-
-#### props
-
-| Name               | Value Type        | Default value | Description                                                                                              |
-| ------------------ | ----------------- | ------------- | -------------------------------------------------------------------------------------------------------- |
-| `emitCurrentState` | `Boolean`         | `true`        | If true, current state will be emitted.                                                                  |
-| `onChange`         | `Function`        | `undefined`   | Callback which emits the current state (first argument) change and the previous state (second argument). |
-| `children`         | `Function` or any | `undefined`   |                                                                                                          |
-
-### `<BluetoothState.PoweredOn>`
-
-The `children` prop of this component will rendered only when bluetooth is turned on.
-
-### `<BluetoothState.PoweredOff>`
-
-The `children` prop of this component will rendered only when bluetooth is turned off.
-
-### `<BluetoothState.Resetting>`
-
-The `children` prop of this component will rendered only when bluetooth state is changing.
-
-- "PoweredOff" -> "PoweredOn"
-- "PoweredOn" -> "PoweredOff"
-
-### `<BluetoothState.Unauthorized>`
-
-The `children` prop of this component will rendered only when the app doesn't have the permission to use bluetooth.
-
-### `<BluetoothState.Unsupported>`
-
-The `children` prop of this component will rendered only when the device doesn't support bluetooth.
-
-### `<BluetoothState.Unknown>`
-
-The `children` prop of this component will rendered only when the bluetooth state is unknown.
-
----
-
-### BluetoothState
-
-An example you will find in `example/app/ExampleWithDeclarativeApi.js`
-
-##### Context
-
-Each component has access to the same context as shown below.
-
-```js
-{
-  bluetoothState: String,
-  openSettings: Function,
-  requestToEnable: Function,
-  enable: Function,
-  disable: Function,
+```tsx
+try {
+  await BluetoothStateManager.requestToEnable();
+} catch (error) {
+  // Failed
 }
 ```
 
-##### `children` prop as function:
+### requestToDisable()
 
-```jsx
-<BluetoothState>
-  {({ bluetoothState, openSettings, requestToEnable, enable, disable }) => {
-    // show something ...
-    return <View />;
-  }}
-</BluetoothState>
-```
+Show a dialog that allows the user to turn off Bluetooth.
 
-### BluetoothState.\<BluetoothStateType\>
+- This function is **only** on **android** available.
 
-#### Example
-
-```jsx
-import { BluetoothState } from 'react-native-bluetooth-state-manager';
-
-<BluetoothState>
-  <BluetoothState.PoweredOn>
-    <Text>This will rendered only when bluetooth is turned on.</Text>
-  </BluetoothState.PoweredOn>
-  <BluetoothState.PoweredOff>
-    {({ requestToEnable, openSettings }) => (
-      <View>
-        <Text>This will rendered only when bluetooth is turned off.</Text>
-        <Button
-          title="This will rendered only when bluetooth is turned off."
-          onPress={Platform.OS === 'android' ? requestToEnable : openSettings}
-        />
-      </View>
-    )}
-  </BluetoothState.PoweredOff>
-  <BluetoothState.Resetting>
-    <ActivityIndicator />
-  </BluetoothState.Resetting>
-  <BluetoothState.Unauthorized>
-    <Text>This will rendered only when bluetooth permission is not granted.</Text>
-  </BluetoothState.Unauthorized>
-  <BluetoothState.Unsupported>
-    <Text>This will rendered only when bluetooth is not supported.</Text>
-  </BluetoothState.Unsupported>
-  <BluetoothState.Unknown>
-    <Text>You have a really strange phone.</Text>
-  </BluetoothState.Unknown>
-</BluetoothState>;
+```tsx
+try {
+  await BluetoothStateManager.requestToDisable();
+} catch (error) {
+  // Failed
+}
 ```
 
 ## ToDo's
@@ -397,3 +194,4 @@ In several of my projects I'm working on, I had to integrate several third-party
 ## License
 
 MIT
+````
