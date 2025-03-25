@@ -24,7 +24,6 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
-    "@babel/runtime": "^7.25.0",
     "@react-native-community/cli": "15.0.1",
     "@react-native-community/cli-platform-android": "15.0.1",
     "@react-native-community/cli-platform-ios": "15.0.1",
@@ -35,10 +34,14 @@
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "eslint": "^8.19.0",
-    "prettier": "2.8.8",
     "typescript": "5.0.4"
   },
   "engines": {
     "node": ">=18"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": false
   }
 }
