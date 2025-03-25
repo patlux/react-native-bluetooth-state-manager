@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    {
+      "path": "./example"
+    },
+    {
+      "path": "./react-native-bluetooth-state-manager"
+    }
+  ]
+}

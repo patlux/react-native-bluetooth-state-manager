@@ -5,10 +5,9 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios --simulator='iPhone 16'",
-    "lint": "eslint .",
     "start": "react-native start --reset-cache",
-    "test": "jest",
-    "pod": "pod install --project-directory=ios && cd .."
+    "pod": "pod install --project-directory=ios && cd ..",
+    "lint": "TIMING=1 eslint ."
   },
   "dependencies": {
     "@react-navigation/native": "^7.0.18",
@@ -19,7 +18,8 @@
     "react-native-nitro-modules": "0.25.2",
     "react-native-permissions": "^5.3.0",
     "react-native-safe-area-context": "^5.3.0",
-    "react-native-screens": "^4.9.2"
+    "react-native-screens": "^4.9.2",
+    "react-native-bluetooth-state-manager": "*"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -32,13 +32,10 @@
     "@react-native/eslint-config": "0.77.0",
     "@react-native/metro-config": "0.77.0",
     "@react-native/typescript-config": "0.77.0",
-    "@types/jest": "^29.5.13",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "eslint": "^8.19.0",
-    "jest": "^29.6.3",
     "prettier": "2.8.8",
-    "react-test-renderer": "18.3.1",
     "typescript": "5.0.4"
   },
   "engines": {
