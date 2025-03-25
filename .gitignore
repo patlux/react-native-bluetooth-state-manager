@@ -85,3 +85,7 @@ lib/
 
 # TypeScript
 tsconfig.tsbuildinfo
+
+
+.nx/cache
+.nx/workspace-data

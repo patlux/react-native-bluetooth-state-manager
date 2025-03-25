@@ -12,5 +12,8 @@
     "nitro-codegen",
     "react-native-bluetooth-state-manager",
     "react-native-nitro-modules"
-  ]
+  ],
+  "devDependencies": {
+    "nx": "20.6.2"
+  }
 }
