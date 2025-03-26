@@ -1,0 +1,43 @@
+name: validate
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+env:
+  BUN_VERSION: 1.2.5
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/setup
+
+      - name: 🔎 Lint
+        run: bunx nx affected -t lint
+
+  types:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/setup
+
+      - name: 🩺 Type Checking
+        run: bunx nx affected -t typecheck
+
+  formatting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/setup
+
+      - name: 💅 Formatting
+        run: bunx nx affected -t check-format

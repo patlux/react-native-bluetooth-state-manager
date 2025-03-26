@@ -34,7 +34,9 @@
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf android/build node_modules/**/android/build lib",
     "codegen": "bun typecheck && nitro-codegen --logLevel=\"debug\"",
-    "postcodegen": "bun run build"
+    "postcodegen": "bun run build",
+    "check-format": "prettier --check .",
+    "format": "prettier --write ."
   },
   "keywords": [
     "react-native",

@@ -1,0 +1,12 @@
+name: setup
+
+runs:
+  using: "composite"
+  steps:
+    - uses: oven-sh/setup-bun@v2
+      with:
+        bun-version-file: ".tool-versions"
+
+    - name: 📦 Install dependencies
+      run: bun install
+      shell: bash
