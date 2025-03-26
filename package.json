@@ -9,6 +9,7 @@
     "react-native": "0.77.0"
   },
   "trustedDependencies": [
+    "@swc/core",
     "nitro-codegen",
     "nx",
     "react-native-bluetooth-state-manager",
@@ -17,5 +18,8 @@
   "devDependencies": {
     "nx": "20.6.2",
     "prettier": "^3.5.3"
+  },
+  "patchedDependencies": {
+    "nx@20.6.2": "patches/nx@20.6.2.patch"
   }
 }

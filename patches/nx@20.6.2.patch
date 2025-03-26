@@ -1,0 +1,23 @@
+diff --git a/src/plugins/js/lock-file/lock-file.js b/src/plugins/js/lock-file/lock-file.js
+index 3a4dd9f7f20910cd24692d8a6be81ee9abe0fa42..3c7aa2c3ae9d18c2e21b870728a57e8aadcc200d 100644
+--- a/src/plugins/js/lock-file/lock-file.js
++++ b/src/plugins/js/lock-file/lock-file.js
+@@ -133,7 +133,17 @@ function getLockFileName(packageManager) {
+         return NPM_LOCK_FILE;
+     }
+     if (packageManager === 'bun') {
+-        return BUN_LOCK_FILE;
++        try {
++            const bunVersion = (0, node_child_process_1.execSync)('bun --version').toString().trim();
++            // In version 1.2.0, bun switched to a text based lockfile format by default
++            if ((0, semver_1.gte)(bunVersion, '1.2.0')) {
++                return BUN_TEXT_LOCK_FILE;
++            }
++            return BUN_LOCK_FILE;
++        }
++        catch {
++            return BUN_LOCK_FILE;
++        }
+     }
+     throw new Error(`Unknown package manager: ${packageManager}`);
+ }

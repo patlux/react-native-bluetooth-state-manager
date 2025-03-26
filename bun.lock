@@ -64,6 +64,9 @@
     "nitro-codegen",
     "react-native-bluetooth-state-manager",
   ],
+  "patchedDependencies": {
+    "nx@20.6.2": "patches/nx@20.6.2.patch",
+  },
   "overrides": {
     "react": "18.3.1",
     "react-native": "0.77.0",
