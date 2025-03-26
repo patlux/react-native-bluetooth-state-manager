@@ -2,17 +2,29 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "outputs": [
-        "{projectRoot}/lib"
-      ],
+      "outputs": ["{projectRoot}/lib"],
       "cache": true
     },
     "codegen": {
-      "outputs": [
-        "{projectRoot}/nitrogen/generated"
-      ],
+      "outputs": ["{projectRoot}/nitrogen/generated"],
       "cache": true
     }
   },
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "plugins": [
+    {
+      "plugin": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "tsc:typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    }
+  ]
 }
