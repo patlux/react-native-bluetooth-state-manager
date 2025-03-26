@@ -10,6 +10,12 @@
       "cache": true
     }
   },
+  "release": {
+    "projects": ["packages/*"],
+    "version": {
+      "preVersionCommand": "bunx nx affected -t build"
+    }
+  },
   "defaultBase": "master",
   "plugins": [
     {

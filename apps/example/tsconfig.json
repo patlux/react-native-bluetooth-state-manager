@@ -1,7 +1,11 @@
 {
   "extends": [
-    "../tsconfig.base.json",
+    "../../tsconfig.base.json",
     "@react-native/typescript-config/tsconfig.json"
   ],
+  "compilerOptions": {
+    "types": ["react-native"]
+  },
+  "include": ["app.json"],
   "references": []
 }

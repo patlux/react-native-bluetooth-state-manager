@@ -7,7 +7,10 @@
     "ios": "react-native run-ios --simulator='iPhone 16'",
     "start": "react-native start --reset-cache",
     "pod": "pod install --project-directory=ios && cd ..",
-    "lint": "TIMING=1 eslint ."
+    "lint": "TIMING=1 eslint .",
+    "typecheck": "tsc --noEmit",
+    "check-format": "prettier --check .",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@react-navigation/native": "^7.0.18",
@@ -32,7 +35,6 @@
     "@react-native/metro-config": "0.77.0",
     "@react-native/typescript-config": "0.77.0",
     "@types/react": "^18.2.6",
-    "@types/react-test-renderer": "^18.0.0",
     "eslint": "^8.19.0",
     "typescript": "5.0.4"
   },
