@@ -29,7 +29,7 @@ export const Permissions = ({ children }: PropsWithChildren) => {
     },
   })
 
-  console.log(`Permissions()`, {
+  console.log('Permissions()', {
     data,
     requestError: requestPermission.error,
   })
