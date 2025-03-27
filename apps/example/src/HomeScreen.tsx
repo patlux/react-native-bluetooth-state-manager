@@ -55,20 +55,20 @@ const CurrentState = () => {
 }
 
 const RequestToEnableBluetooth = () => {
-  console.log(`RequestToEnable()`)
+  console.log('RequestToEnable()')
   const requestToEnableMutation = useMutation({
     mutationFn: async () => {
-      console.log(`Start...`)
+      console.log('Start...')
       const result = await BluetoothStateManager.requestToEnable()
       console.log(`...end. Result = "${result}".`)
       return result
     },
     onError: (error) => {
       console.error(error)
-      Alert.alert(`Error`, `${error}`)
+      Alert.alert('Error', `${error}`)
     },
     onSuccess: () => {
-      Alert.alert(`Bluetooth enabled`)
+      Alert.alert('Bluetooth enabled')
     },
   })
 
@@ -90,10 +90,10 @@ const RequestToDisableBluetooth = () => {
     },
     onError: (error) => {
       console.error(error)
-      Alert.alert(`Error`, `${error}`)
+      Alert.alert('Error', `${error}`)
     },
     onSuccess: () => {
-      Alert.alert(`Bluetooth disabled`)
+      Alert.alert('Bluetooth disabled')
     },
   })
 
@@ -139,9 +139,9 @@ const Listener = ({ index }: { index: number }) => {
   const [state, setState] = useState(BluetoothStateManager.getStateSync())
 
   useEffect(() => {
-    console.log(`start listening..`)
+    console.log('start listening..')
     const remove = BluetoothStateManager.addListener((newState) => {
-      console.log(`########### FROM LISTENER`, { newState })
+      console.log('########### FROM LISTENER', { newState })
       setState(newState)
     })
     return () => {
