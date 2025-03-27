@@ -8,8 +8,9 @@ on:
     branches:
       - master
 
-env:
-  BUN_VERSION: 1.2.5
+permissions:
+  actions: read
+  contents: read
 
 jobs:
   eslint:
@@ -17,7 +18,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: ./.github/setup
+      - uses: nrwl/nx-set-shas@v4
 
       - name: 🔎 Lint
         run: bunx nx affected -t lint
@@ -27,7 +31,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: ./.github/setup
+      - uses: nrwl/nx-set-shas@v4
 
       - name: 🩺 Type Checking
         run: bunx nx affected -t typecheck
@@ -37,7 +44,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: ./.github/setup
+      - uses: nrwl/nx-set-shas@v4
 
       - name: 💅 Formatting
         run: bunx nx affected -t check-format
