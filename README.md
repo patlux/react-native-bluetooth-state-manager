@@ -44,7 +44,7 @@ To use `requestToEnable()` and `requestToDisable()` on android, you have to add 
 
 ```diff
   <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECt"/>
++    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
   </manifest>
 ```
 
