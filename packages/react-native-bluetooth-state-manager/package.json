@@ -36,7 +36,8 @@
     "codegen": "bun typecheck && nitro-codegen --logLevel=\"debug\"",
     "postcodegen": "bun run build",
     "check-format": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepack": "cp ../../README.md ./README.md"
   },
   "keywords": [
     "react-native",
