@@ -11,7 +11,17 @@
 
 # 2.0.0 (2025-05-19)
 
-This was a version bump only, there were no code changes.
+### Features
+
+- Complete rewrite using [nitro-modules](https://nitro.margelo.com/)
+- Native TypeScript support
+- New synchronous API: `getStateSync()` to retrieve Bluetooth state
+
+### Breaking Changes
+
+- Requires `react-native-nitro-modules` to be installed
+- Removed `enable()` and `disable()` due to deprecation starting from Android SDK 33. If your app targets SDK < 33 and depends on these methods, remain on `v1.3.5`
+- Replacing programmatic Bluetooth control: use `askToEnable()` and `askToDisable()` to prompt the user instead
 
 ## 2.0.0-0 (2025-03-26)
 
