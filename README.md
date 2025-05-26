@@ -15,6 +15,8 @@ If you need further functionality like connecting and communicating to a device,
 
 ## Installation
 
+Requires react-native `>=0.75`. See also the requirements of [react-native-nitro-modules](https://nitro.margelo.com/docs/minimum-requirements).
+
 ```shell
 bun add react-native-nitro-modules react-native-bluetooth-state-manager
 cd ios && bunx pod-install
