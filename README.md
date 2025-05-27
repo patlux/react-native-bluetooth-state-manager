@@ -4,9 +4,9 @@
 
 The only purpose of this library is to manage the Bluetooth state. Not more, not less.
 
-If you need further functionality like connecting and communicating to a device, please look at [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx).
+If you need further functionality like connecting and communicating with a device, please look at [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx).
 
-## Table Of Content
+## Table Of Contents
 
 - [Installation](#installation)
 - [Setup](#setup)
@@ -32,7 +32,7 @@ import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
 
 **iOS**
 
-You must provide a short description why you need access to bluetooth in your app. Otherwise your app will crash when requesting for bluetooth:
+You must provide a short description of why you need access to Bluetooth in your app. Otherwise, your app will crash when requesting Bluetooth access:
 
 ```
 This app has crashed because it attempted to access privacy-sensitive data without a usage description.  The app's Info.plist must contain an NSBluetoothAlwaysUsageDescription key with a string value explaining to the user how the app uses this data.
@@ -42,7 +42,7 @@ See: https://developer.apple.com/documentation/bundleresources/information_prope
 
 **Android**
 
-To use `requestToEnable()` and `requestToDisable()` on android, you have to add `BLUETOOTH_CONNECT` permission to your `AndroidManifest.xml`:
+To use `requestToEnable()` and `requestToDisable()` on Android, you have to add the `BLUETOOTH_CONNECT` permission to your `AndroidManifest.xml`:
 
 ```diff
   <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -50,7 +50,7 @@ To use `requestToEnable()` and `requestToDisable()` on android, you have to add 
   </manifest>
 ```
 
-`BLUETOOTH_CONNECT` is a runtime permission, that means you must ask the user at runtime for permission. For that, we recommend [react-native-permissions](https://github.com/zoontek/react-native-permissions/tree/master).
+`BLUETOOTH_CONNECT` is a runtime permission, which means you must ask the user at runtime for permission. For that, we recommend [react-native-permissions](https://github.com/zoontek/react-native-permissions/tree/master).
 
 ## Usage
 
@@ -64,13 +64,13 @@ import {
 // Get bluetooth state
 
 // hook
-const bluetootState = useBluetoothState();
+const bluetoothState = useBluetoothState();
 // synchronous
-const bluetootState = BluetoothStateManager.getStateSync();
+const bluetoothState = BluetoothStateManager.getStateSync();
 // asynchronous
-const bluetootState = await BluetoothStateManager.getState();
+const bluetoothState = await BluetoothStateManager.getState();
 // Event listener
-const [bluetootState, setBluetoothState] = useState<BluetoothState>();
+const [bluetoothState, setBluetoothState] = useState<BluetoothState>();
 useEffect(() => {
   const remove = BluetoothStateManager.addListener((state) => {
     setBluetoothState(state);
@@ -199,7 +199,7 @@ BluetoothStateManager.openSettings();
 
 Show a dialog that allows the user to turn on Bluetooth. More here: [Android documentation](https://developer.android.com/reference/android/bluetooth/BluetoothAdapter.html#ACTION_REQUEST_ENABLE).
 
-- This function is **only** on **android** available.
+- This function is **only** available on **Android**.
 
 ```tsx
 try {
@@ -213,7 +213,7 @@ try {
 
 Show a dialog that allows the user to turn off Bluetooth.
 
-- This function is **only** on **android** available.
+- This function is **only** available on **Android**.
 
 ```tsx
 try {
@@ -225,7 +225,7 @@ try {
 
 ## Why?
 
-##### Why not just using [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx)?
+##### Why not just use [react-native-ble-plx](https://github.com/Polidea/react-native-ble-plx)?
 
 Because it's too bloated for my needs.
 
