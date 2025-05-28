@@ -2,16 +2,22 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {
-      "outputs": ["{projectRoot}/lib"],
+      "outputs": [
+        "{projectRoot}/lib"
+      ],
       "cache": true
     },
     "codegen": {
-      "outputs": ["{projectRoot}/nitrogen/generated"],
+      "outputs": [
+        "{projectRoot}/nitrogen/generated"
+      ],
       "cache": true
     }
   },
   "release": {
-    "projects": ["packages/*"],
+    "projects": [
+      "packages/*"
+    ],
     "version": {
       "preVersionCommand": "bunx nx affected -t build"
     }
@@ -30,6 +36,22 @@
           "buildDepsName": "build-deps",
           "watchDepsName": "watch-deps"
         }
+      }
+    },
+    {
+      "plugin": "@nx/expo/plugin",
+      "options": {
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "prebuildTargetName": "prebuild",
+        "serveTargetName": "serve",
+        "installTargetName": "install",
+        "exportTargetName": "export",
+        "submitTargetName": "submit",
+        "runIosTargetName": "run-ios",
+        "runAndroidTargetName": "run-android",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
       }
     }
   ]
