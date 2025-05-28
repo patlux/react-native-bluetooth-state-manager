@@ -16,15 +16,12 @@
     "react-native-nitro-modules"
   ],
   "devDependencies": {
-    "@nx/js": "20.6.2",
+    "@nx/js": "21.1.2",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
-    "nx": "20.6.2",
+    "nx": "21.1.2",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3"
-  },
-  "patchedDependencies": {
-    "nx@20.6.2": "patches/nx@20.6.2.patch"
   }
 }
