@@ -36,7 +36,7 @@
     "@react-native/typescript-config": "0.77.0",
     "@types/react": "^18.2.6",
     "eslint": "^8.19.0",
-    "typescript": "5.0.4"
+    "typescript": "*"
   },
   "engines": {
     "node": ">=18"

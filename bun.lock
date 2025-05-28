@@ -10,6 +10,7 @@
         "@swc/helpers": "~0.5.11",
         "nx": "20.6.2",
         "prettier": "^3.5.3",
+        "typescript": "^5.8.3",
       },
     },
     "apps/example": {
@@ -39,12 +40,12 @@
         "@react-native/typescript-config": "0.77.0",
         "@types/react": "^18.2.6",
         "eslint": "^8.19.0",
-        "typescript": "5.0.4",
+        "typescript": "*",
       },
     },
     "packages/react-native-bluetooth-state-manager": {
       "name": "react-native-bluetooth-state-manager",
-      "version": "2.0.0-0",
+      "version": "2.0.1",
       "devDependencies": {
         "@types/react": "^18.3.4",
         "nitro-codegen": "0.25.2",
@@ -52,7 +53,7 @@
         "react-native": "0.77.0",
         "react-native-builder-bob": "^0.34.0",
         "react-native-nitro-modules": "0.25.2",
-        "typescript": "5.0.4",
+        "typescript": "*",
       },
       "peerDependencies": {
         "react": "*",
@@ -1698,7 +1699,7 @@
 
     "typed-array-length": ["typed-array-length@1.0.7", "", { "dependencies": { "call-bind": "^1.0.7", "for-each": "^0.3.3", "gopd": "^1.0.1", "is-typed-array": "^1.1.13", "possible-typed-array-names": "^1.0.0", "reflect.getprototypeof": "^1.0.6" } }, "sha512-3KS2b+kL7fsuk/eJZ7EQdnEmQoaho/r6KUef7hxvltNA5DR8NAUM+8wJMbJyZ4G9/7i3v5zPBIMN5aybAh2/Jg=="],
 
-    "typescript": ["typescript@5.0.4", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw=="],
+    "typescript": ["typescript@5.8.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="],
 
     "unbox-primitive": ["unbox-primitive@1.1.0", "", { "dependencies": { "call-bound": "^1.0.3", "has-bigints": "^1.0.2", "has-symbols": "^1.1.0", "which-boxed-primitive": "^1.1.1" } }, "sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw=="],
 

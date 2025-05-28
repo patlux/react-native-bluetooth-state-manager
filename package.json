@@ -21,7 +21,8 @@
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "nx": "20.6.2",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
   },
   "patchedDependencies": {
     "nx@20.6.2": "patches/nx@20.6.2.patch"
