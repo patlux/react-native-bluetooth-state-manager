@@ -34,9 +34,9 @@ export const BluetoothStateManager: Module = {
     if (emitCurrentState) {
       callback(module.getStateSync())
     }
-    const index = module.addListener(callback)
+    const callbackRef = module.addListener(callback)
     return () => {
-      module.removeListener(index)
+      module.removeListener(callbackRef)
     }
   },
   /**

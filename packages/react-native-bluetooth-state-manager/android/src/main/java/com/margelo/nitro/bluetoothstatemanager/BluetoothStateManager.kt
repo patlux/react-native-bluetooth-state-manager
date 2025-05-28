@@ -13,6 +13,7 @@ import com.facebook.react.bridge.BaseActivityEventListener
 import com.facebook.react.bridge.ReactApplicationContext
 import com.margelo.nitro.NitroModules
 import com.margelo.nitro.core.Promise
+import java.util.UUID
 
 class BluetoothStateManager : HybridBluetoothStateManagerSpec() {
   override val memorySize: Long
@@ -36,7 +37,7 @@ class BluetoothStateManager : HybridBluetoothStateManagerSpec() {
       when (intent?.action) {
         BluetoothAdapter.ACTION_STATE_CHANGED -> {
           val state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR)
-          for (listener in listeners) {
+          for (listener in listeners.values) {
             listener(fromBluetoothState(state))
           }
         }
@@ -82,21 +83,22 @@ class BluetoothStateManager : HybridBluetoothStateManagerSpec() {
     }
   }
 
-  private var listeners = mutableListOf<(state: BluetoothState) -> Unit>()
+  private val listeners = mutableMapOf<Any, (BluetoothState) -> Unit>()
 
-  override fun addListener(callback: (state: BluetoothState) -> Unit): Double {
-    if (this.listeners.size == 0) {
+  override fun addListener(callback: (state: BluetoothState) -> Unit): String {
+    if (this.listeners.isEmpty()) {
       this.startListenForBluetoothStateChange()
     }
 
-    this.listeners.add(callback)
-    return this.listeners.size.toDouble() - 1
+    val key = UUID.randomUUID().toString()
+    this.listeners[key] = callback
+    return key
   }
 
-  override fun removeListener(index: Double) {
-    this.listeners.removeAt(index.toInt())
-    if (this.listeners.size == 0) {
-      this.stopListenForBluetoothStateChange()
+  override fun removeListener(callbackRef: String) {
+    this.listeners.remove(callbackRef)
+    if (this.listeners.isEmpty()) {
+      stopListenForBluetoothStateChange()
     }
   }
 

@@ -51,16 +51,17 @@ class Listener {
 }
 
 class HybridBluetoothStateManager: HybridBluetoothStateManagerSpec {
-    var listeners: [Listener] = []
+    var listeners: [String: Listener] = [:]
     
-    func addListener(callback: @escaping (BluetoothState) -> Void) throws -> Double {
+    func addListener(callback: @escaping (BluetoothState) -> Void) throws -> String {
         let listener = Listener(callback: callback)
-        listeners.append(listener)
-        return Double(listeners.count) - 1.0
+        let key = UUID().uuidString
+        listeners[key] = listener
+        return key
     }
     
-    func removeListener(index: Double) throws {
-        listeners.remove(at: Int(index))
+    func removeListener(callbackRef: String) throws {
+        listeners.removeValue(forKey: callbackRef)
     }
 
     var centralManager: CBCentralManager!
@@ -69,7 +70,7 @@ class HybridBluetoothStateManager: HybridBluetoothStateManagerSpec {
     override init() {
         super.init()
         self.bManager = CentralManager.init { state in
-            for listener in self.listeners {
+            for listener in self.listeners.values {
                 listener.callback(state)
             }
         }

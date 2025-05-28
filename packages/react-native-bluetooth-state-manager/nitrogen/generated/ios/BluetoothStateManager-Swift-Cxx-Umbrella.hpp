@@ -21,6 +21,7 @@ namespace margelo::nitro::bluetoothstatemanager { class HybridBluetoothStateMana
 #include <exception>
 #include <functional>
 #include <memory>
+#include <string>
 
 // C++ helpers for Swift
 #include "BluetoothStateManager-Swift-Cxx-Bridge.hpp"

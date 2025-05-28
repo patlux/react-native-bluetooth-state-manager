@@ -48,18 +48,18 @@ abstract class HybridBluetoothStateManagerSpec: HybridObject() {
   @Keep
   abstract fun getStateSync(): BluetoothState
   
-  abstract fun addListener(callback: (state: BluetoothState) -> Unit): Double
+  abstract fun addListener(callback: (state: BluetoothState) -> Unit): String
   
   @DoNotStrip
   @Keep
-  private fun addListener_cxx(callback: Func_void_BluetoothState): Double {
+  private fun addListener_cxx(callback: Func_void_BluetoothState): String {
     val __result = addListener(callback)
     return __result
   }
   
   @DoNotStrip
   @Keep
-  abstract fun removeListener(index: Double): Unit
+  abstract fun removeListener(callbackRef: String): Unit
   
   @DoNotStrip
   @Keep

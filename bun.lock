@@ -12,6 +12,7 @@
         "react": "~18.3.1",
         "react-dom": "~18.3.1",
         "react-native": "0.76.3",
+        "react-native-nitro-modules": "^0.25.2",
         "react-native-svg": "~15.8.0",
         "react-native-svg-transformer": "~1.5.0",
         "react-native-web": "~0.19.13",
@@ -71,6 +72,8 @@
         "expo": "~52.0.46",
         "react": "18.3.1",
         "react-native": "0.76.9",
+        "react-native-bluetooth-state-manager": "*",
+        "react-native-nitro-modules": "*",
       },
     },
     "packages/react-native-bluetooth-state-manager": {

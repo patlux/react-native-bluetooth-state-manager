@@ -132,7 +132,7 @@ public class HybridBluetoothStateManagerSpec_cxx {
   }
   
   @inline(__always)
-  public final func addListener(callback: bridge.Func_void_BluetoothState) -> bridge.Result_double_ {
+  public final func addListener(callback: bridge.Func_void_BluetoothState) -> bridge.Result_std__string_ {
     do {
       let __result = try self.__implementation.addListener(callback: { () -> (BluetoothState) -> Void in
         let __wrappedFunction = bridge.wrap_Func_void_BluetoothState(callback)
@@ -140,18 +140,18 @@ public class HybridBluetoothStateManagerSpec_cxx {
           __wrappedFunction.call(__state.rawValue)
         }
       }())
-      let __resultCpp = __result
-      return bridge.create_Result_double_(__resultCpp)
+      let __resultCpp = std.string(__result)
+      return bridge.create_Result_std__string_(__resultCpp)
     } catch (let __error) {
       let __exceptionPtr = __error.toCpp()
-      return bridge.create_Result_double_(__exceptionPtr)
+      return bridge.create_Result_std__string_(__exceptionPtr)
     }
   }
   
   @inline(__always)
-  public final func removeListener(index: Double) -> bridge.Result_void_ {
+  public final func removeListener(callbackRef: std.string) -> bridge.Result_void_ {
     do {
-      try self.__implementation.removeListener(index: index)
+      try self.__implementation.removeListener(callbackRef: String(callbackRef))
       return bridge.create_Result_void_()
     } catch (let __error) {
       let __exceptionPtr = __error.toCpp()

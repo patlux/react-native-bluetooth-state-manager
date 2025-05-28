@@ -18,6 +18,7 @@ namespace margelo::nitro::bluetoothstatemanager { enum class BluetoothState; }
 
 #include <NitroModules/Promise.hpp>
 #include "BluetoothState.hpp"
+#include <string>
 #include <functional>
 
 namespace margelo::nitro::bluetoothstatemanager {
@@ -53,8 +54,8 @@ namespace margelo::nitro::bluetoothstatemanager {
       // Methods
       virtual std::shared_ptr<Promise<BluetoothState>> getState() = 0;
       virtual BluetoothState getStateSync() = 0;
-      virtual double addListener(const std::function<void(BluetoothState /* state */)>& callback) = 0;
-      virtual void removeListener(double index) = 0;
+      virtual std::string addListener(const std::function<void(BluetoothState /* state */)>& callback) = 0;
+      virtual void removeListener(const std::string& callbackRef) = 0;
       virtual std::shared_ptr<Promise<void>> openSettings() = 0;
       virtual std::shared_ptr<Promise<void>> requestToEnable() = 0;
       virtual std::shared_ptr<Promise<void>> requestToDisable() = 0;

@@ -14,6 +14,7 @@ namespace margelo::nitro::bluetoothstatemanager { enum class BluetoothState; }
 #include "BluetoothState.hpp"
 #include <NitroModules/JPromise.hpp>
 #include "JBluetoothState.hpp"
+#include <string>
 #include <functional>
 #include "JFunc_void_BluetoothState.hpp"
 
@@ -59,14 +60,14 @@ namespace margelo::nitro::bluetoothstatemanager {
     auto __result = method(_javaPart);
     return __result->toCpp();
   }
-  double JHybridBluetoothStateManagerSpec::addListener(const std::function<void(BluetoothState /* state */)>& callback) {
-    static const auto method = javaClassStatic()->getMethod<double(jni::alias_ref<JFunc_void_BluetoothState::javaobject> /* callback */)>("addListener_cxx");
+  std::string JHybridBluetoothStateManagerSpec::addListener(const std::function<void(BluetoothState /* state */)>& callback) {
+    static const auto method = javaClassStatic()->getMethod<jni::local_ref<jni::JString>(jni::alias_ref<JFunc_void_BluetoothState::javaobject> /* callback */)>("addListener_cxx");
     auto __result = method(_javaPart, JFunc_void_BluetoothState_cxx::fromCpp(callback));
-    return __result;
+    return __result->toStdString();
   }
-  void JHybridBluetoothStateManagerSpec::removeListener(double index) {
-    static const auto method = javaClassStatic()->getMethod<void(double /* index */)>("removeListener");
-    method(_javaPart, index);
+  void JHybridBluetoothStateManagerSpec::removeListener(const std::string& callbackRef) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* callbackRef */)>("removeListener");
+    method(_javaPart, jni::make_jstring(callbackRef));
   }
   std::shared_ptr<Promise<void>> JHybridBluetoothStateManagerSpec::openSettings() {
     static const auto method = javaClassStatic()->getMethod<jni::local_ref<JPromise::javaobject>()>("openSettings");

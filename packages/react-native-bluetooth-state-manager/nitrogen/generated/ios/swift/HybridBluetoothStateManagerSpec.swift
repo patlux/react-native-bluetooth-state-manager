@@ -16,8 +16,8 @@ public protocol HybridBluetoothStateManagerSpec_protocol: HybridObject {
   // Methods
   func getState() throws -> Promise<BluetoothState>
   func getStateSync() throws -> BluetoothState
-  func addListener(callback: @escaping (_ state: BluetoothState) -> Void) throws -> Double
-  func removeListener(index: Double) throws -> Void
+  func addListener(callback: @escaping (_ state: BluetoothState) -> Void) throws -> String
+  func removeListener(callbackRef: String) throws -> Void
   func openSettings() throws -> Promise<Void>
   func requestToEnable() throws -> Promise<Void>
   func requestToDisable() throws -> Promise<Void>

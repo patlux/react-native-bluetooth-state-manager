@@ -53,8 +53,8 @@ namespace margelo::nitro::bluetoothstatemanager {
     // Methods
     std::shared_ptr<Promise<BluetoothState>> getState() override;
     BluetoothState getStateSync() override;
-    double addListener(const std::function<void(BluetoothState /* state */)>& callback) override;
-    void removeListener(double index) override;
+    std::string addListener(const std::function<void(BluetoothState /* state */)>& callback) override;
+    void removeListener(const std::string& callbackRef) override;
     std::shared_ptr<Promise<void>> openSettings() override;
     std::shared_ptr<Promise<void>> requestToEnable() override;
     std::shared_ptr<Promise<void>> requestToDisable() override;

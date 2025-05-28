@@ -12,8 +12,8 @@ export interface BluetoothStateManager
   extends HybridObject<{ ios: 'swift'; android: 'kotlin' }> {
   getState(): Promise<BluetoothState>
   getStateSync(): BluetoothState
-  addListener(callback: (state: BluetoothState) => void): number
-  removeListener(index: number): void
+  addListener(callback: (state: BluetoothState) => void): string
+  removeListener(callbackRef: string): void
   openSettings(): Promise<void>
   requestToEnable(): Promise<void>
   requestToDisable(): Promise<void>

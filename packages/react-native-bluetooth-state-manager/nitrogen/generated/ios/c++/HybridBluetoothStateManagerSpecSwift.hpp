@@ -17,6 +17,7 @@ namespace margelo::nitro::bluetoothstatemanager { enum class BluetoothState; }
 
 #include <NitroModules/Promise.hpp>
 #include "BluetoothState.hpp"
+#include <string>
 #include <functional>
 
 #include "BluetoothStateManager-Swift-Cxx-Umbrella.hpp"
@@ -74,7 +75,7 @@ namespace margelo::nitro::bluetoothstatemanager {
       auto __value = std::move(__result.value());
       return __value;
     }
-    inline double addListener(const std::function<void(BluetoothState /* state */)>& callback) override {
+    inline std::string addListener(const std::function<void(BluetoothState /* state */)>& callback) override {
       auto __result = _swiftPart.addListener(callback);
       if (__result.hasError()) [[unlikely]] {
         std::rethrow_exception(__result.error());
@@ -82,8 +83,8 @@ namespace margelo::nitro::bluetoothstatemanager {
       auto __value = std::move(__result.value());
       return __value;
     }
-    inline void removeListener(double index) override {
-      auto __result = _swiftPart.removeListener(std::forward<decltype(index)>(index));
+    inline void removeListener(const std::string& callbackRef) override {
+      auto __result = _swiftPart.removeListener(callbackRef);
       if (__result.hasError()) [[unlikely]] {
         std::rethrow_exception(__result.error());
       }

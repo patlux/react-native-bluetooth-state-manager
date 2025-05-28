@@ -26,6 +26,7 @@ namespace BluetoothStateManager { class HybridBluetoothStateManagerSpec_cxx; }
 #include <exception>
 #include <functional>
 #include <memory>
+#include <string>
 
 /**
  * Contains specialized versions of C++ templated types so they can be accessed from Swift,
@@ -153,13 +154,13 @@ namespace margelo::nitro::bluetoothstatemanager::bridge::swift {
     return Result<BluetoothState>::withError(error);
   }
   
-  // pragma MARK: Result<double>
-  using Result_double_ = Result<double>;
-  inline Result_double_ create_Result_double_(double value) {
-    return Result<double>::withValue(std::move(value));
+  // pragma MARK: Result<std::string>
+  using Result_std__string_ = Result<std::string>;
+  inline Result_std__string_ create_Result_std__string_(const std::string& value) {
+    return Result<std::string>::withValue(value);
   }
-  inline Result_double_ create_Result_double_(const std::exception_ptr& error) {
-    return Result<double>::withError(error);
+  inline Result_std__string_ create_Result_std__string_(const std::exception_ptr& error) {
+    return Result<std::string>::withError(error);
   }
   
   // pragma MARK: Result<void>
