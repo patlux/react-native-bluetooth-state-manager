@@ -7,6 +7,9 @@
     },
     {
       "path": "./react-native-bluetooth-state-manager"
+    },
+    {
+      "path": "./apps/expo-example-app"
     }
   ]
 }
