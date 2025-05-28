@@ -40,6 +40,20 @@ This app has crashed because it attempted to access privacy-sensitive data witho
 
 See: https://developer.apple.com/documentation/bundleresources/information_property_list/nsbluetoothalwaysusagedescription
 
+For expo add the following to your `app.json`/`app.config.js`/`app.config.ts`:
+
+```json
+{
+  "ios": {
+    "infoPlist": {
+      "NSBluetoothAlwaysUsageDescription": "Your reason to use bluetooth"
+    }
+  }
+}
+```
+
+**Important**: The first attempt to check the Bluetooth state will prompt the user for permission to access Bluetooth.
+
 **Android**
 
 To use `requestToEnable()` and `requestToDisable()` on Android, you have to add the `BLUETOOTH_CONNECT` permission to your `AndroidManifest.xml`:
