@@ -1,3 +1,14 @@
+## 2.0.2 (2025-05-29)
+
+### 🩹 Fixes
+
+- **android:** fixes Java IndexOutOfBoundsException exception ([e8326ff](https://github.com/patlux/react-native-bluetooth-state-manager/commit/e8326ff))
+- **ios:** lazy init of ble manager to avoid prompting bluetooth permission on app start ([dfcb901](https://github.com/patlux/react-native-bluetooth-state-manager/commit/dfcb901))
+
+### ❤️ Thank You
+
+- Patrick Wozniak @patlux
+
 ## 2.0.1 (2025-05-19)
 
 ### 🩹 Fixes
