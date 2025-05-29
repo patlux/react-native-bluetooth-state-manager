@@ -57,6 +57,7 @@ class HybridBluetoothStateManager: HybridBluetoothStateManagerSpec {
         let listener = Listener(callback: callback)
         let key = UUID().uuidString
         listeners[key] = listener
+        ensureManagerInitialized()
         return key
     }
     
@@ -67,9 +68,9 @@ class HybridBluetoothStateManager: HybridBluetoothStateManagerSpec {
     var centralManager: CBCentralManager!
     var bManager: CentralManager!
 
-    override init() {
-        super.init()
-        self.bManager = CentralManager.init { state in
+    private func ensureManagerInitialized() {
+        guard bManager == nil else { return }
+        bManager = CentralManager { state in
             for listener in self.listeners.values {
                 listener.callback(state)
             }
@@ -77,12 +78,14 @@ class HybridBluetoothStateManager: HybridBluetoothStateManagerSpec {
     }
 
     func getState() throws -> NitroModules.Promise<BluetoothState> {
+        ensureManagerInitialized()
         return Promise.async {
             return self.bManager.getState()
         }
     }
     
     func getStateSync() throws -> BluetoothState {
+        ensureManagerInitialized()
         return self.bManager.getState()
     }
 

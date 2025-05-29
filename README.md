@@ -108,26 +108,27 @@ await BluetoothStateManager.requestToDisable();
 
 An example is under `example/App.tsx`
 
-| Method                                                  | Return Type               | OS           | Description                                                      |
-| ------------------------------------------------------- | ------------------------- | ------------ | ---------------------------------------------------------------- |
-| [useBluetoothState()](#usebluetoothstate)               | `BluetoothState`          | Android, iOS | Hook that returns the current state of the bluetooth service.    |
-| [getState()](#getstate)                                 | `Promise<BluetoothState>` | Android, iOS | Returns the current state of the bluetooth service.              |
-| [getStateSync()](#getstatesync)                         | `BluetoothState`          | Android, iOS | Returns the current state synchronous of the bluetooth service.  |
-| [addListener(listener, emitCurrentState)](#addlistener) | `Subscription`            | Android, iOS | Listen for bluetooth state changes.                              |
-| [openSettings()](#opensettings)                         | `Promise<null>`           | Android, iOS | Opens the bluetooth settings. Please see below for more details. |
-| [requestToEnable()](#requesttoenable)                   | `Promise<void>`           | Android      | Show a dialog that allows the user to turn on Bluetooth.         |
-| [requestToDisable()](#requesttodisable)                 | `Promise<void>`           | Android      | Show a dialog that allows the user to turn off Bluetooth.        |
+| Method                                                           | Return Type               | OS           | Description                                                      |
+| ---------------------------------------------------------------- | ------------------------- | ------------ | ---------------------------------------------------------------- |
+| [useBluetoothState(enabled: boolean = true)](#usebluetoothstate) | `BluetoothState`          | Android, iOS | Hook that returns the current state of the bluetooth service.    |
+| [getState()](#getstate)                                          | `Promise<BluetoothState>` | Android, iOS | Returns the current state of the bluetooth service.              |
+| [getStateSync()](#getstatesync)                                  | `BluetoothState`          | Android, iOS | Returns the current state synchronous of the bluetooth service.  |
+| [addListener(listener, emitCurrentState)](#addlistener)          | `Subscription`            | Android, iOS | Listen for bluetooth state changes.                              |
+| [openSettings()](#opensettings)                                  | `Promise<null>`           | Android, iOS | Opens the bluetooth settings. Please see below for more details. |
+| [requestToEnable()](#requesttoenable)                            | `Promise<void>`           | Android      | Show a dialog that allows the user to turn on Bluetooth.         |
+| [requestToDisable()](#requesttodisable)                          | `Promise<void>`           | Android      | Show a dialog that allows the user to turn off Bluetooth.        |
 
 ---
 
-### useBluetoothState()
+### useBluetoothState(enabled: boolean = true)
 
 Hook that returns the current state of the bluetooth service.
 
 ```tsx
 import { useBluetoothState } from "react-native-bluetooth-state-manager";
 
-const bluetoothState = useBluetoothState();
+const enabled = true; // default true
+const bluetoothState = useBluetoothState(enabled);
 switch (bluetoothState) {
   case "Unknown":
   case "Resetting":
