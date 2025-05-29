@@ -78,7 +78,7 @@
     },
     "packages/react-native-bluetooth-state-manager": {
       "name": "react-native-bluetooth-state-manager",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "devDependencies": {
         "@types/react": "^18.3.4",
         "nitro-codegen": "0.25.2",
@@ -102,6 +102,9 @@
     "@swc/core",
     "react-native-bluetooth-state-manager",
   ],
+  "patchedDependencies": {
+    "nx@21.1.2": "patches/nx@21.1.2.patch",
+  },
   "overrides": {
     "react": "18.3.1",
     "react-native": "0.77.0",

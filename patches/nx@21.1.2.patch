@@ -1,0 +1,13 @@
+diff --git a/src/plugins/js/lock-file/lock-file.js b/src/plugins/js/lock-file/lock-file.js
+index 3a4dd9f7f20910cd24692d8a6be81ee9abe0fa42..6b9f88de6757247598b1d6ecbe6eff5a5a74ded7 100644
+--- a/src/plugins/js/lock-file/lock-file.js
++++ b/src/plugins/js/lock-file/lock-file.js
+@@ -133,7 +133,7 @@ function getLockFileName(packageManager) {
+         return NPM_LOCK_FILE;
+     }
+     if (packageManager === 'bun') {
+-        return BUN_LOCK_FILE;
++        return (0, node_fs_1.existsSync)(BUN_TEXT_LOCK_PATH) ? BUN_TEXT_LOCK_FILE : BUN_LOCK_FILE;
+     }
+     throw new Error(`Unknown package manager: ${packageManager}`);
+ }
