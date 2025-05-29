@@ -1,10 +1,13 @@
 import { useState } from 'react'
-import { Pressable, SafeAreaView, StatusBar, Text } from 'react-native'
-import { useBluetoothState } from 'react-native-bluetooth-state-manager'
+import { Alert, Pressable, SafeAreaView, StatusBar, Text } from 'react-native'
+import {
+  BluetoothStateManager,
+  useBluetoothState,
+} from 'react-native-bluetooth-state-manager'
 
 export const App = () => {
   const [items, setItems] = useState<number[]>([...Array(5)].map((_, i) => i))
-  console.log({ items })
+  const [enabled, setEnabled] = useState(false)
 
   return (
     <>
@@ -14,9 +17,41 @@ export const App = () => {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
+          rowGap: 12,
         }}
       >
         <Text>Example Expo App</Text>
+
+        <Pressable
+          onPress={() => {
+            setEnabled((prev) => !prev)
+          }}
+        >
+          <Text>Enabled: {enabled ? 'Yes' : 'No'}</Text>
+        </Pressable>
+
+        <Pressable
+          onPress={() => {
+            Alert.alert('State', BluetoothStateManager.getStateSync())
+          }}
+        >
+          <Text>Get State Sync</Text>
+        </Pressable>
+
+        <Pressable
+          onPress={() => {
+            BluetoothStateManager.getState()
+              .then((state) => {
+                Alert.alert('State', state)
+              })
+              .catch((error) => {
+                Alert.alert('State error', error)
+              })
+          }}
+        >
+          <Text>Get State</Text>
+        </Pressable>
+
         {items.map((_, index) => {
           return (
             <Pressable
@@ -32,7 +67,7 @@ export const App = () => {
               }}
             >
               <Text>{index}.</Text>
-              <Listener />
+              <Listener enabled={enabled} />
             </Pressable>
           )
         })}
@@ -50,8 +85,8 @@ export const App = () => {
   )
 }
 
-const Listener = () => {
-  const bleState = useBluetoothState()
+const Listener = ({ enabled }: { enabled: boolean }) => {
+  const bleState = useBluetoothState(enabled)
   console.log({ bleState })
   return <Text>{bleState}</Text>
 }
