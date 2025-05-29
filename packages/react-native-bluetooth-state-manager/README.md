@@ -27,7 +27,7 @@ cd ios && bunx pod-install
 ## Setup
 
 ```tsx
-import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
+import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
 ```
 
 **iOS**
@@ -73,35 +73,35 @@ import {
   useBluetoothState,
   BluetoothStateManager,
   BluetoothState,
-} from "react-native-bluetooth-state-manager";
+} from 'react-native-bluetooth-state-manager'
 
 // Get bluetooth state
 
 // hook
-const bluetoothState = useBluetoothState();
+const bluetoothState = useBluetoothState()
 // synchronous
-const bluetoothState = BluetoothStateManager.getStateSync();
+const bluetoothState = BluetoothStateManager.getStateSync()
 // asynchronous
-const bluetoothState = await BluetoothStateManager.getState();
+const bluetoothState = await BluetoothStateManager.getState()
 // Event listener
-const [bluetoothState, setBluetoothState] = useState<BluetoothState>();
+const [bluetoothState, setBluetoothState] = useState<BluetoothState>()
 useEffect(() => {
   const remove = BluetoothStateManager.addListener((state) => {
-    setBluetoothState(state);
-  });
-  return remove;
-}, []);
+    setBluetoothState(state)
+  })
+  return remove
+}, [])
 
 // Open settings page
-await BluetoothStateManager.openSettings();
+await BluetoothStateManager.openSettings()
 
 // Android only
 
 // Ask user to enable bluetooth
-await BluetoothStateManager.requestToEnable();
+await BluetoothStateManager.requestToEnable()
 
 // Ask user to disable bluetooth
-await BluetoothStateManager.requestToDisable();
+await BluetoothStateManager.requestToDisable()
 ```
 
 ## API
@@ -125,19 +125,19 @@ An example is under `example/App.tsx`
 Hook that returns the current state of the bluetooth service.
 
 ```tsx
-import { useBluetoothState } from "react-native-bluetooth-state-manager";
+import { useBluetoothState } from 'react-native-bluetooth-state-manager'
 
-const enabled = true; // default true
-const bluetoothState = useBluetoothState(enabled);
+const enabled = true // default true
+const bluetoothState = useBluetoothState(enabled)
 switch (bluetoothState) {
-  case "Unknown":
-  case "Resetting":
-  case "Unsupported":
-  case "Unauthorized":
-  case "PoweredOff":
-  case "PoweredOn":
+  case 'Unknown':
+  case 'Resetting':
+  case 'Unsupported':
+  case 'Unauthorized':
+  case 'PoweredOff':
+  case 'PoweredOn':
   default:
-    break;
+    break
 }
 ```
 
@@ -146,17 +146,17 @@ switch (bluetoothState) {
 Returns the current state of the bluetooth service.
 
 ```tsx
-import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
-const bluetoothState = await BluetoothStateManager.getState();
+import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+const bluetoothState = await BluetoothStateManager.getState()
 switch (bluetoothState) {
-  case "Unknown":
-  case "Resetting":
-  case "Unsupported":
-  case "Unauthorized":
-  case "PoweredOff":
-  case "PoweredOn":
+  case 'Unknown':
+  case 'Resetting':
+  case 'Unsupported':
+  case 'Unauthorized':
+  case 'PoweredOff':
+  case 'PoweredOn':
   default:
-    break;
+    break
 }
 ```
 
@@ -165,17 +165,17 @@ switch (bluetoothState) {
 Returns the current state synchronous of the bluetooth service.
 
 ```tsx
-import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
-const bluetoothState = BluetoothStateManager.getStateSync();
+import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
+const bluetoothState = BluetoothStateManager.getStateSync()
 switch (bluetoothState) {
-  case "Unknown":
-  case "Resetting":
-  case "Unsupported":
-  case "Unauthorized":
-  case "PoweredOff":
-  case "PoweredOn":
+  case 'Unknown':
+  case 'Resetting':
+  case 'Unsupported':
+  case 'Unauthorized':
+  case 'PoweredOff':
+  case 'PoweredOn':
   default:
-    break;
+    break
 }
 ```
 
@@ -184,10 +184,10 @@ switch (bluetoothState) {
 Listen for bluetooth state changes.
 
 ```tsx
-import { BluetoothStateManager } from "react-native-bluetooth-state-manager";
+import { BluetoothStateManager } from 'react-native-bluetooth-state-manager'
 BluetoothStateManager.addListener((bluetoothState) => {
   // do something...
-}, true /*=emitCurrentState*/);
+}, true /*=emitCurrentState*/)
 ```
 
 ### openSettings()
@@ -207,7 +207,7 @@ Tested:
 Opens the settings page of the app. Please see [here](https://developer.apple.com/documentation/uikit/uiapplicationopensettingsurlstring).
 
 ```tsx
-BluetoothStateManager.openSettings();
+BluetoothStateManager.openSettings()
 ```
 
 ### requestToEnable()
@@ -218,7 +218,7 @@ Show a dialog that allows the user to turn on Bluetooth. More here: [Android doc
 
 ```tsx
 try {
-  await BluetoothStateManager.requestToEnable();
+  await BluetoothStateManager.requestToEnable()
 } catch (error) {
   // Failed
 }
@@ -232,7 +232,7 @@ Show a dialog that allows the user to turn off Bluetooth.
 
 ```tsx
 try {
-  await BluetoothStateManager.requestToDisable();
+  await BluetoothStateManager.requestToDisable()
 } catch (error) {
   // Failed
 }
